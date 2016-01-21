@@ -92,41 +92,6 @@ void AfficherEleve(Eleve_t eleve, char* nom, char* prenom);
     RetourLigne(2);
 }
 
-
-void SupprimerEleve(Classe* ecole)
-{
-	Classe* ptr_c;
-
-	Eleve* ptr_e;
-
-	char nom[TAILLECHAINE];
-	char prenom[TAILLECHAINE];
-
-
-
-	printf("\n\tNom prenom : ");
-	scanf("%s %s", nom, prenom);
-	ViderBuffer();
-
-	NormaliserNomPrenom(NULL, nom, prenom);
-
-	ptr_e = RechercherEcole(nom, prenom, ecole);
-
-	if (ptr_e != NULL)
-	{
-		ptr_c = RechercherClasse(ptr_e->nomClasse, ecole);
-
-		if (ptr_c->nbEleve > 0)
-		{
-			CopieEleve(ptr_e, ptr_c->classe[ptr_c->nbEleve-1]);
-			(ptr_c->nbEleve)--;
-			printf("\n\tEleve supprime.\n");
-		}
-	}
-	else
-		printf("\n\tCet eleve n'existe pas.\n");
-}
-
 void SupprimerEleve(Classe_t* tete)
 {
 	Classe* ptr_c;
