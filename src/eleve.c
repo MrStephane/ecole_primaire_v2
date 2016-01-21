@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <string.h>
@@ -18,7 +19,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 		{
 			continuer = 1;
 			printf("\n\tNom : ");
-			fscanf("%s", ptr_eleve->nom);
+			scanf("%s", ptr_eleve->nom);
 			ViderBuffer();
 
 			if (ControleChaine(ptr_eleve->nom) == 0)
@@ -37,7 +38,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 		{
 			continuer = 1;
 			printf("\tPrenom : ");
-			fscanf("%s", ptr_eleve->prenom);
+			scanf("%s", ptr_eleve->prenom);
 			ViderBuffer();
 
 			if (ControleChaine(ptr_eleve->prenom) == 0)
@@ -70,8 +71,8 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
     do
     {
-    	fprintf("\tS'agit-il d'un garcon (0) ou d'une fille (1) : ");
-    	fscanf("%d", &genre);
+    	printf("\tS'agit-il d'un garcon (0) ou d'une fille (1) : ");
+    	scanf("%d", &genre);
     	ViderBuffer();
 
     	if (genre != 0 && genre != 1)
@@ -81,4 +82,88 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
     ptr_eleve->genre = genre;
 
     RetourLigne(1);
+}
+
+void AfficherEleve(Eleve_t eleve, char* nom, char* prenom);
+{
+    printf("\t| %s %s\n", eleve.nom, eleve.prenom);
+    printf("\t| Ne le ");
+    AfficherDate(eleve.dateDeNaissance);
+    RetourLigne(2);
+}
+
+
+void SupprimerEleve(Classe* ecole)
+{
+	Classe* ptr_c;
+
+	Eleve* ptr_e;
+
+	char nom[TAILLECHAINE];
+	char prenom[TAILLECHAINE];
+
+
+
+	printf("\n\tNom prenom : ");
+	scanf("%s %s", nom, prenom);
+	ViderBuffer();
+
+	NormaliserNomPrenom(NULL, nom, prenom);
+
+	ptr_e = RechercherEcole(nom, prenom, ecole);
+
+	if (ptr_e != NULL)
+	{
+		ptr_c = RechercherClasse(ptr_e->nomClasse, ecole);
+
+		if (ptr_c->nbEleve > 0)
+		{
+			CopieEleve(ptr_e, ptr_c->classe[ptr_c->nbEleve-1]);
+			(ptr_c->nbEleve)--;
+			printf("\n\tEleve supprime.\n");
+		}
+	}
+	else
+		printf("\n\tCet eleve n'existe pas.\n");
+}
+
+void SupprimerEleve(Classe_t* tete)
+{
+	Classe* ptr_c;
+
+	Eleve* ptr_e;
+
+	char nom[TAILLECHAINE];
+	char prenom[TAILLECHAINE];
+
+	Classe_t *courant;
+
+    courant = tete;
+       
+	printf("\n\tNom prenom : ");
+	scanf("%s %s", nom, prenom);
+	ViderBuffer();
+
+	NormaliserNomPrenom(NULL, nom, prenom);
+
+	ptr_e = RechercherEcole(nom, prenom, ecole);
+	
+	while(courant != NULL)
+	{
+
+		if (ptr_e != NULL)
+		{
+			ptr_c = RechercherClasse(ptr_e->nomClasse, ecole);
+
+			if (ptr_c->nbEleve > 0)
+			{
+				CopieEleve(ptr_e, ptr_c->classe[ptr_c->nbEleve-1]);
+				(ptr_c->nbEleve)--;
+				printf("\n\tEleve supprime.\n");
+			}
+		}
+		else
+			printf("\n\tCet eleve n'existe pas.\n");
+	}
+	courant = courant->suivant;
 }
