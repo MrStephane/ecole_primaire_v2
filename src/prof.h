@@ -26,10 +26,21 @@ typedef struct Prof
 
 
 
-
 /*************
  * Fonctions *
  *************/
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Prof_t* CreationProf(void);
+
 
 
 /* Fonction :
@@ -53,6 +64,18 @@ void AfficherProf(Prof_t prof);
  * *Description*
  */
 void SaisirProf(Prof_t* ptr_prof);
+
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void SupprimerProf(Prof_t *ptr_prof);
 
 
 #endif // PROF_H

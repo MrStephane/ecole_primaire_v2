@@ -1,6 +1,21 @@
 #include "prof.h"
 
 
+
+Prof_t* CreationProf(void)
+{
+	Prof_t *ptr_prof;
+	
+	ptr_prof = (Prof_t*) malloc(sizeof(Prof_t));
+	
+	if (ptr_prof == NULL)
+		exit(EXIT_FAILURE);
+	
+	return ptr_prof;
+}
+
+
+
 void AfficherProf(Prof_t p)
 {
 	printf("%s %s %s", p.civilite, p.nom, p.prenom);
@@ -37,4 +52,11 @@ void SaisirProf(Prof_t *ptr_p)
 	NormaliserNomPrenom(ptr_p->civilite, ptr_p->nom, ptr_p->prenom);
 
     RetourLigne(1);
+}
+
+
+
+void SupprimerProf(Prof_t *ptr_prof)
+{
+	free(ptr_prof);
 }
