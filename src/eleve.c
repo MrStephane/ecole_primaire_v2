@@ -96,14 +96,18 @@ void SupprimerEleve(Classe_t* tete)
 {
 	Classe_t* ptr_c;
 
-	Eleve* ptr_e;
+	Eleve_t* ptr_e;
+
+	Eleve_t* eleveCourant;
+
+	eleveCourant = tete->classe;
 
 	char nom[TAILLECHAINE];
 	char prenom[TAILLECHAINE];
 
-	Classe_t *courant;
+	Classe_t *classeCourant;
 
-    courant = tete;
+    classeCourant = tete;
        
 	printf("\n\tNom prenom : ");
 	scanf("%s %s", nom, prenom);
@@ -115,14 +119,19 @@ void SupprimerEleve(Classe_t* tete)
 	
 	while(courant != NULL)
 	{
-
 		if (ptr_e != NULL)
 		{
 			ptr_c = RechercherClasse(ptr_e->nomClasse, ecole);
 
 			if (ptr_c->nbEleve > 0)
 			{
-				CopieEleve(ptr_e, ptr_c->classe[ptr_c->nbEleve-1]);
+				eleveCourant = classeCourant->classe;
+				while(eleveCourant->suivant !=NULL)
+					{
+						eleveCourant = eleveCourant->suivant;
+					}
+
+				CopieEleve(ptr_e, eleveCourant);
 				(ptr_c->nbEleve)--;
 				printf("\n\tEleve supprime.\n");
 			}
@@ -130,5 +139,5 @@ void SupprimerEleve(Classe_t* tete)
 		else
 			printf("\n\tCet eleve n'existe pas.\n");
 	}
-	courant = courant->suivant;
+	classeCourant = classeCourant->suivant;
 }
