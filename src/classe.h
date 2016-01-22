@@ -5,8 +5,8 @@
 #include <string.h>
 #include <time.h>
 
-#include “prof.h”
-#include “eleve.h”
+#include "prof.h"
+#include "eleve.h"
 
 
 #ifndef CLASSE_H
@@ -19,8 +19,8 @@
  **************/
 
 
-typedef struct Classe 
-{     
+typedef struct Classe
+{
 	char nomClasse[5];
 	Prof* professeur;
 	int nbEleve;
