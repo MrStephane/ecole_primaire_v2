@@ -44,7 +44,7 @@ classe.h :
 	- void AfficherClasse(Classe_t *ptr_classe);
 	  Affiche les élèves de la classe.
 	  
-	- void AjouterEleveDansClasse(Classe_t *ptr_classe);
+	- void AjouterEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 	  Ajoute un élève dans la classe, si posible.
 	  
 	- void SupprimerEleveDansClasse(Classe_t *ptr_classe);
