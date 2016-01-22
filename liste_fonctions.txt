@@ -1,4 +1,4 @@
-Fichiers et leurs fonctions :
+﻿Fichiers et leurs fonctions :
 
 
 date.h :
@@ -71,3 +71,14 @@ ecole.h :
 	  
 	- Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole);
 	  Recherche un élève dans l'école et retourne un pointeur sur celui-ci si il existe.
+
+
+fichier.h :
+	- void gestionErreurs(FILE * fichier);
+	  Traite les erreurs d'ouvertures des fichiers
+	  
+	- void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
+	  Inscrit dans un fichier de sauvegarde les infos sur les eleves et leurs classes
+	  
+	- void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole);
+	  Recupere les eleves et leurs classes depuis un fichier precedemment sauvegarder
