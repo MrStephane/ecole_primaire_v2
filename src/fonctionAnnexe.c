@@ -49,3 +49,20 @@ void NormaliserNomPrenom(char * civilite, char * nom, char * prenom)
 		}
 	}
 }
+
+
+
+int ControleChaine(char* ch)
+{
+	int tailleCh = strlen(ch);
+	int i;
+
+
+	for (i = 0; i < tailleCh; ++i)
+	{
+		if (!((ch[i] > 64 && ch[i] < 91) || (ch[i] > 96 && ch[i] < 123)))
+            return 0;
+	}
+
+	return 1;
+}

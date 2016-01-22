@@ -11,4 +11,7 @@ void RetourLigne(int nb);
 void NormaliserNomPrenom(char * civilite, char * nom, char * prenom);
 
 
+int ControleChaine(char* ch);
+
+
 #endif
