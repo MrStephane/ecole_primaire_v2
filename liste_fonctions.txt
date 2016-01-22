@@ -61,6 +61,8 @@ personnel.h :
 	- void SaisirPersonnel(Personnel_t *ptr_personnel);
 	  Saisie les informations du personnel.
 
+	- void SupprimerPersonnel(Personnel_t *ptr_personnel);
+	  Supprime le personnel choisi.
 	  
 ecole.h :
 	- void AjouterEleveDansEcole(Ecole_t *ptr_ecole);
