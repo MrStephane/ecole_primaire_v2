@@ -1,11 +1,27 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
 
 #include "fichier.h"
+
+int comptedonnees(FILE * fichier)
+{
+	char lignes[100];
+	char c;
+	int compteur = 0;
+	
+	while((c=fgetc(fichier)) != EOF) // Tant qu'on parcours le fichier sans en trouver la fin
+	{
+		if(c == '\n')
+			compteur++;	// on incrémente le compteur a chaque saut de ligne
+	}
+	printf("\n\t Le fichier contient %d lignes\n", compteur);	// puis affichage de celui ci
+	
+	return compteur;	// on renvoie le nombre de lignes
+}
+
 
 void gestionErreurs(FILE * fichier)
 {
@@ -29,9 +45,19 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 	while(positionClasse->suivant != NULL)
 	{
 	positionEleve = positionClasse->classe;
+		
 		while(positionEleve->suivant != NULL)
 		{
-			fprintf(fichier, "%s %s %d\n", positionEleve->prenom, positionEleve->nom, positionEleve->age);		// Ecriture dans le fichier
+			fprintf(fichier, " %s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
+				positionEleve->nom, positionEleve->prenom,
+				positionEleve->age,
+				positionEleve->dateDeNaissance.tm_mday,
+				positionEleve->dateDeNaissance.tm_mon,
+				positionEleve->dateDeNaissance.tm_myear,
+				positionEleve->genre,
+				positionEleve->nomClasse,
+				positionEleve->adresse);		// Ecriture dans le fichier
+				
 			positionEleve = positionEleve->suivant;
 		}
 	positionClasse = positionClasse->suivant;
@@ -55,9 +81,19 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 	while(positionClasse->suivant != NULL)
 	{
 	positionEleve = positionClasse->classe;
+		
 		while(positionEleve->suivant != NULL)
 		{
-			fscanf(fichier, "%s %s %d\n", positionEleve->nom, positionEleve->prenom, &positionEleve->age);
+			fscanf(fichier, " %s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
+				positionEleve->nom, positionEleve->prenom,
+				&positionEleve->age,
+				&positionEleve->dateDeNaissance.tm_mday,
+				&positionEleve->dateDeNaissance.tm_mon,
+				&positionEleve->dateDeNaissance.tm_myear,
+				&positionEleve->genre,
+				positionEleve->nomClasse,
+				positionEleve->adresse);
+
 			positionEleve = positionEleve->suivant;
 		}
 	positionClasse = positionClasse->suivant;

@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include <string.h>
-#include <time.h>
+
 #include "ecole.h"
 
 
@@ -25,6 +23,16 @@
  * ----------
  * *Description*
  */
+int comptedonnees(FILE * fichier);
+ 
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
 void gestionErreurs(FILE * fichier);
 
 /* Fonction :
@@ -36,8 +44,6 @@ void gestionErreurs(FILE * fichier);
  * *Description*
  */
 void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
-
-
 
 /* Fonction :
  * ----------
