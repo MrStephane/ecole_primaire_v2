@@ -5,6 +5,12 @@
 
 #include "date.h"
 
+/*typedef struct Date
+{
+	int jour;
+	int mois;
+	int an;
+}Date;*/
 
 void RecupererDate(struct tm *ptr_d)
 {
@@ -14,14 +20,14 @@ void RecupererDate(struct tm *ptr_d)
 
 }
 
-void Afficherdate(struct tm d)
+void AfficherDate(struct tm ptr_d)
 {
-    printf("%d/%d/%d", &d.tm_mday, &d.tm_mon, &d.tm_year);
+    printf("%d/%d/%d", &ptr_d.tm_mday, &ptr_d.tm_mon, &ptr_d.tm_year);
 }
 
-/*void SaisirDate(Date *ptr_d)
+void SaisirDate(Date *d)
 {
 	printf("(jj.mm.aaaa) : ");
-	scanf("%d.%d.%d", &ptr_d->jour, &ptr_d->mois, &ptr_d->an);
+	scanf("%d.%d.%d", &d->jour, &d->mois, &d->an);
 	ViderBuffer();
-}*/
+}
