@@ -22,7 +22,7 @@ void RecupererDate(struct tm *ptr_d)
 
 void AfficherDate(struct tm ptr_d)
 {
-    printf("%d/%d/%d", &ptr_d.tm_mday, &ptr_d.tm_mon, &ptr_d.tm_year);
+    printf("%d/%d/%d", ptr_d.tm_mday, ptr_d.tm_mon, ptr_d.tm_year);
 }
 
 void SaisirDate(struct tm *ptr_d)
