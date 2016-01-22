@@ -27,7 +27,8 @@ typedef struct Eleve
 	int genre; // 0 pour garcon et 1 pour fille     
 	char nomClasse[5]; 
 	char adresse[26];
-	struct Eleve * suivant;
+	struct Eleve *suivant;
+	struct Eleve *precedent;
 }Eleve_t;
 
 
