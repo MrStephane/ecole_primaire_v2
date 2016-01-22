@@ -35,6 +35,9 @@ prof.h :
 	  
 	- void SaisirProf(Prof_t *ptr_prof);
 	  Saisie un prof.
+	
+	- void SupprimerProf(Prof_t *ptr_prof);
+	  Supprime un prof de la mémoire (free).
 
 	  
 classe.h :
