@@ -60,6 +60,70 @@ void SaisirEleve(Eleve_t* ptr_eleve);
  * *Description*
  */
 void AfficherEleve(Eleve_t eleve);
-//void SupprimerEleve(Classe_t* ptr_eleve);
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void SupprimerEleve(Classe_t* tete);
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom)
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Eleve* RechercherEleve(char* nom, char* prenom, Classe_t* c)
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie)
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Eleve_t* DernierEleve(Eleve_t *courant)
 
 #endif // ELEVE_H
