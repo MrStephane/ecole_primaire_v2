@@ -32,10 +32,9 @@ typedef struct Personnel
  *************/
 
 
-/* Fonction :
+/* Fonction : AfficherPersonnel()
  * ----------
- * Sortie :
- *  Usage :
+ *  Usage : afficher un membre du personnel voulu
  * ----------
  * *Description*
  */
@@ -43,14 +42,20 @@ void AfficherPersonnel(Personnel_t personnel);
 
 
 
-/* Fonction :
+/* Fonction : SaisirPersonnel()
  * ----------
- * Entrée :
- *  Usage :
+ *  Usage : enregistrer du personnel dans l'ecole
  * ----------
  * *Description*
  */
 void SaisirPersonnel(Personnel_t * ptr_personnel);
 
+/* Fonction : SupprimerPersonnel()
+ * ----------
+ *  Usage : supprimer un membre du personnel
+ * ----------
+ * *Description*
+ */
 
+void SupprimerPersonnel(Personnel_t *ptr_personnel);
 #endif // PERSONNEL_H
