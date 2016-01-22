@@ -439,3 +439,15 @@ void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie)
 	eleveACopie->precedent = eleveCopie->precedent;
 	eleveACopie->suivant = eleveCopie->suivant;
 }
+
+
+
+Eleve_t* DernierEleve(Eleve_t *courant)
+{
+	while (courant->suivant != NULL)
+	{
+		courant = courant->suivant
+	}
+	
+	return courant;
+}
