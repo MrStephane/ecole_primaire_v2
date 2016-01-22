@@ -20,17 +20,18 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 	FILE * fichier;
 
 	Classe_t *positionClasse = ecole.depart;
+	Eleve_t *positionEleve = positionClasse->classe;
 	
 		fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
 		gestionErreurs(fichier);
 	
 	while(positionClasse->suivant != NULL)
 	{
-		fprintf(fichier, "Classe de %s :", positionClasse->nomClasse);
-		while(positionClasse.classe.positionEleve->suivant != NULL)
+	positionEleve = positionClasse->classe;
+		while(positionEleve->suivant != NULL)
 		{
-			fprintf(fichier, "test\n");		// Ecriture dans le fichier
-			positionClasse.classe.positionEleve = positionClasse.classe.positionEleve->suivant;
+			fprintf(fichier, "%s %s %d\n", positionEleve->prenom, positionEleve->nom, positionEleve->age);		// Ecriture dans le fichier
+			positionEleve = positionEleve->suivant;
 		}
 	positionClasse = positionClasse->suivant;
 	}
@@ -39,20 +40,26 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 
 }
 
-/*
+
 void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
 	
+	Classe_t * positionClasse = ptr_ecole->depart;
+	Eleve_t * positionEleve = positionClasse->classe;
+	
 	fichier = fopen(nomFichier, "r");	// Ouverture du fichier de sauvegarde en lecture seule
 	gestionErreurs(fichier);
 	
-	while(!feof(fichier));
+	while(positionClasse->suivant != NULL)
 	{
-		fscanf(fichier, "%s ; %s \n", ptr_ecole->depart.classe.nom, ptr_ecole->depart.classe.prenom);
-		printf("%s ; %s \n", ptr_ecole->depart.classe.nom, ptr_ecole->depart.classe.prenom);
+	positionEleve = positionClasse->classe;
+		while(positionEleve->suivant != NULL)
+		{
+			fscanf(fichier, "%s %s %d\n", positionEleve->nom, positionEleve->prenom, &positionEleve->age);
+			positionEleve = positionEleve->suivant;
+		}
+	positionClasse = positionClasse->suivant;
 	}
 	fclose(fichier);
 }
-
-*/
