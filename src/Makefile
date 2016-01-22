@@ -6,6 +6,16 @@ ProjetEcolePrimaire.exe : fonctionAnnexe.o date.o eleve.o prof.o classe.o person
 	$(Compilo) -o $@ *.o
 
 
+# Test unitiaire
+test_unitaire_prof: test_unitaire_prof.o prof.o
+	$(Compilo) -o test_unitaire_prof.exe $^
+
+
+# Dépendances des tests unitaires
+test_unitaire_prof.o: test_unitaire_prof.c prof.h prof.o
+	$(Compilo) -c $<
+
+
 # Dépendances
 fonctionAnnexe.o: fonctionAnnexe.c fonctionAnnexe.h
 	$(Compilo) -c fonctionAnnexe.c
@@ -27,6 +37,7 @@ personnel.o : personnel.c personnel.h
     
 fichier.o : fichier.c fichier.h
 	$(Compilo) -c fichier.c
+
 
 	
 # Cibles fictives
