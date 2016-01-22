@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <string.h>
+#include <time.h>
+
 #include "fichier.h"
 
 void gestionErreurs(FILE * fichier)
@@ -12,21 +18,28 @@ void gestionErreurs(FILE * fichier)
 void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
-	
-	fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
-	gestionErreurs(fichier);
-	
 
-	/*while(ecole.depart.suivant != NULL)
+	Classe_t *positionClasse = ecole.depart;
+	
+		fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
+		gestionErreurs(fichier);
+	
+	while(positionClasse->suivant != NULL)
 	{
-		fprintf(fichier, "%s ; %s ; %d ; %d/%d/d ; %d ; %s ; %s \n", ecole.depart.classe.nom, ecole.depart.classe.prenom, ecole.depart.classe.age, ecole.depart.classe.dateDeNaissance, ecole.depart.classe.nomClasse, ecole.depart.classe.adresse);		// Ecriture dans le fichier
-	}*/
+		fprintf(fichier, "Classe de %s :", positionClasse->nomClasse);
+		while(positionClasse.classe.positionEleve->suivant != NULL)
+		{
+			fprintf(fichier, "test\n");		// Ecriture dans le fichier
+			positionClasse.classe.positionEleve = positionClasse.classe.positionEleve->suivant;
+		}
+	positionClasse = positionClasse->suivant;
+	}
 
 	fclose(fichier);	// Fermeture du fichier écrit
 
 }
 
-
+/*
 void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
@@ -41,3 +54,5 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 	}
 	fclose(fichier);
 }
+
+*/

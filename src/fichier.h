@@ -1,8 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include <time.h>
-
+#include "ecole.h"
 
 #ifndef FICHIER_H
 #define FICHIER_H
@@ -22,7 +21,17 @@
  * ----------
  * *Description*
  */
-void ecrireBaseEleve(char *nomFichier, Classe_t ecole);
+void gestionErreurs(FILE * fichier);
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
 
 
 
@@ -34,6 +43,6 @@ void ecrireBaseEleve(char *nomFichier, Classe_t ecole);
  * ----------
  * *Description*
  */
-void lireBaseEleve(char *nomFichier, Classe_t *ptr_ecole);
+//void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole);
 
 #endif // FICHIER_H
