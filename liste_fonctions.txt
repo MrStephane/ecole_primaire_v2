@@ -74,6 +74,9 @@ ecole.h :
 
 
 fichier.h :
+	- int comptedonnees(FILE * fichier);
+	  Compte le nombre de lignes trouvées dans un fichier
+
 	- void gestionErreurs(FILE * fichier);
 	  Traite les erreurs d'ouvertures des fichiers
 	  
