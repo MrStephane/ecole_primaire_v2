@@ -2,21 +2,24 @@
 Compilo=gcc
 
 # Cible principale
-ProjetEcolePrimaire.exe : date.o eleve.o prof.o classe.o personnel.o fichier.o
+ProjetEcolePrimaire.exe : fonctionAnnexe.o date.o eleve.o prof.o classe.o personnel.o fichier.o
 	$(Compilo) -o $@ *.o
 
 
 # Dépendances
+fonctionAnnexe.o: fonctionAnnexe.c fonctionAnnexe.h
+	$(Compilo) -c fonctionAnnexe.c
+
 date.o : date.c date.h
 	$(Compilo) -c date.c
 
 eleve.o : eleve.c eleve.h date.o
 	$(Compilo) -c eleve.c
     
-prof.o : prof.c prof.h
+prof.o : prof.c prof.h fonctionAnnexe.o
 	$(Compilo) -c prof.c
     
-classe.o : classe.c classe.h prof.o eleve.o date.o
+classe.o : classe.c classe.h prof.o eleve.o date.o fonctionAnnexe.o
 	$(Compilo) -c classe.c
     
 personnel.o : personnel.c personnel.h
