@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <time.h>
 
+#include "fonctionAnnexe.h"
+
 
 #ifndef PROF_H
 #define PROF_H
