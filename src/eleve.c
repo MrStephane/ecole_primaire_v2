@@ -94,7 +94,7 @@ void AfficherEleve(Eleve_t eleve, char* nom, char* prenom);
 
 void SupprimerEleve(Classe_t* tete)
 {
-	Classe* ptr_c;
+	Classe_t* ptr_c;
 
 	Eleve* ptr_e;
 
