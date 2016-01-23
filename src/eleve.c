@@ -81,3 +81,25 @@ void CopieEleve(Eleve_t* eleveCopie, Eleve_t eleveACopie)
 	eleveACopie->precedent = eleveCopie->precedent;
 	eleveACopie->suivant = eleveCopie->suivant;
 }
+
+
+
+Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position)
+{
+	int i = 1;
+	
+	
+	if (ptr_eleveCourant == NULL)
+		exit(EXIT_FAILURE);
+	
+	while (i < position && ptr_eleveCourant->suivant != NULL)
+	{
+		++i;
+		ptr_eleveCourant = ptr_eleveCourant->suivant;
+	}
+	
+	if (i == position)
+		return ptr_eleveCourant;
+	else
+		return NULL;
+}

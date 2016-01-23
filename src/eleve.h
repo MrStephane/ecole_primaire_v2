@@ -128,4 +128,16 @@ void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie)
  */
 Eleve_t* DernierEleve(Eleve_t *courant)
 
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position);
+
 #endif // ELEVE_H
