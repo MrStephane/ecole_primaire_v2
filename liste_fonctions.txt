@@ -102,3 +102,20 @@ fichier.h :
 	  
 	- void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole);
 	  Recupere les eleves et leurs classes depuis un fichier precedemment sauvegarder
+
+	  
+fonctionAnnexe.h :
+	- void ViderBuffer(void);
+	  Permet de vider le buffer.
+
+	- void RetourLigne(int nb);
+	  Permet de faire nb retour de ligne dans l'affichage console.
+
+	- void NormaliserNomPrenom(char * civilite, char * nom, char * prenom);
+	  Normalise les chaines en mettant une majuscule au début et le reste en miniscule.
+
+	- int ControleChaine(char* ch);
+	  Permet de savoir si la chaine contient des accents ou des chiffres.
+
+	- void SaisieChaineControle(char *ptr_chaine, char *message);
+	  Permet de saisir une chaine tant quelle n'a pas validé le contrôle de ControleChaine.
