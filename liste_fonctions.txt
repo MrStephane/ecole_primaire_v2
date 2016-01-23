@@ -64,6 +64,9 @@ classe.h :
 	  
 	- Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom);
 	  Recherche un élève dans  la classe et retourne un pointeur sur celui-ci si il existe.
+	
+	- Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
+	  Permet de recupérer un pointeur sur la classe de l'élève.
 
 	  
 personnel.h :
