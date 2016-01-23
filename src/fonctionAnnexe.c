@@ -71,3 +71,22 @@ int ControleChaine(char* ch)
 
 	return 1;
 }
+
+
+
+void SaisieChaineControle(char *ptr_chaine, char *message)
+{
+	int continuer = 0;
+	
+	do
+	{
+		printf("%s", message);
+		scanf("%s", ptr_chaine);
+		ViderBuffer();
+		
+		if (ControleChaine(ptr_chaine) == 0)
+			printf("Ecrivez le nom sans chiffres ni accents.\n");
+		else
+			continuer = 1;
+	} while (!continuer);
+}

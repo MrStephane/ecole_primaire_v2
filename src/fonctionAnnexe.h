@@ -21,4 +21,7 @@ void NormaliserNomPrenom(char * civilite, char * nom, char * prenom);
 int ControleChaine(char* ch);
 
 
+void SaisieChaineControle(char *ptr_chaine, char *message);
+
+
 #endif
