@@ -13,7 +13,7 @@ Prof_t* CreationProf(void)
 {
 	Prof_t *ptr_prof;
 	
-	ptr_prof = (Prof_t*) malloc(sizeof(Prof_t));
+	ptr_prof = (Prof_t*) calloc(sizeof(Prof_t));
 	
 	if (ptr_prof == NULL)
 		exit(EXIT_FAILURE);
@@ -33,12 +33,11 @@ void AfficherProf(Prof_t p)
 
 void SaisirProf(Prof_t *ptr_p)
 {
-    int continuer;
+    int continuer = 0;
 
 
 	do
 	{
-		continuer = 1;
 		printf("Saisir la civilite du professeur ( Monsieur, Madame, Mademoiselle ) : ");
 		scanf("%s", ptr_p->civilite);
 		ViderBuffer();
@@ -54,8 +53,9 @@ void SaisirProf(Prof_t *ptr_p)
 			RetourLigne(1);
 			printf("Ecrivez le nom, le prenom et la civilite sans chiffres ni accents.\n");
 			RetourLigne(1);
-			continuer = 0;
 		}
+		else
+			continuer = 1;
 	} while (!continuer);
 
 	NormaliserNomPrenom(ptr_p->civilite, ptr_p->nom, ptr_p->prenom);
