@@ -18,6 +18,8 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 	int genre;
 	int continuer = 0;
 
+	
+	// Si on a pas passé de nom en paramètre alors on le saisi
 	if (nom == NULL)
 	{
 		do
@@ -37,6 +39,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 	else
 		strcpy(ptr_eleve->nom, nom);
 
+	// Si on a pas passé de prenom en paramètre alors on le saisi
 	if (prenom == NULL)
 	{
 		do
@@ -89,13 +92,17 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
     RetourLigne(1);
 }
 
-void AfficherEleve(Eleve_t eleve, char* nom, char* prenom);
+
+
+void AfficherEleve(Eleve_t eleve, char* nom, char* prenom)
 {
     printf("\t| %s %s\n", eleve.nom, eleve.prenom);
     printf("\t| Ne le ");
     AfficherDate(eleve.dateDeNaissance);
     RetourLigne(2);
 }
+
+
 
 void CopieEleve(Eleve_t* eleveCopie, Eleve_t eleveACopie)
 {
