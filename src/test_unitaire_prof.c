@@ -16,6 +16,8 @@ int main(int argc, char* argv[])
 	RetourLigne(2);
 	
 	AfficherProf(*ptr_prof);
+
+	RetourLigne(2);
 	
 	SupprimerProf(ptr_prof);
 	
