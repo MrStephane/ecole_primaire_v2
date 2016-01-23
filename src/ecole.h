@@ -8,6 +8,12 @@
 #define TAILLECHAINE 40
 
 
+
+/**************
+ * Structures *
+ **************/
+
+
 typedef struct Ecole
 {
 	char nomEcole[TAILLECHAINE];
@@ -18,6 +24,31 @@ typedef struct Ecole
 
 
 
+/*************
+ * Fonctions *
+ *************/
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void AjouterEleveDansEcole(Ecole_t *ptr_ecole);
+
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
 void SupprimerEleveDansEcole(Ecole_t *ptr_ecole);
 
 
