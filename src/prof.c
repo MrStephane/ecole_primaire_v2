@@ -53,13 +53,12 @@ void SaisirProf(Prof_t *ptr_p)
 		{
 			RetourLigne(1);
 			printf("Ecrivez le nom, le prenom et la civilite sans chiffres ni accents.\n");
+			RetourLigne(1);
 			continuer = 0;
 		}
 	} while (!continuer);
 
 	NormaliserNomPrenom(ptr_p->civilite, ptr_p->nom, ptr_p->prenom);
-
-    RetourLigne(1);
 }
 
 

@@ -11,10 +11,13 @@ int main(int argc, char* argv[])
 	
 	ptr_prof = CreationProf();
 	
+	RetourLigne(2);
+	
 	SaisirProf(ptr_prof);
 	
 	RetourLigne(2);
 	
+	printf("Professeur : ");
 	AfficherProf(*ptr_prof);
 
 	RetourLigne(2);
