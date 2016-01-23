@@ -12,6 +12,9 @@
 #define PROF_H
 
 
+#define TAILLECHAINE 40
+
+
 
 /**************
  * Structures *
