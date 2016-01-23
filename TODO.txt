@@ -1,4 +1,4 @@
-TODO liste
+TODO list
 
 
 Très Important :
@@ -26,3 +26,9 @@ Très Important :
 Important :
 
 	- Ecrire un fichier de test pour les fonctions de date.c
+	- Ecrire un fichier de test pour les fonctions de eleve.c
+	- Ecrire un fichier de test pour les fonctions de classe.c
+	- Ecrire un fichier de test pour les fonctions de fichier.c
+	- Ecrire un fichier de test pour les fonctions de ecole.c
+	- Ecrire un fichier de test pour les fonctions de personnel.c
+	- (FAIT) Ecrire un fichier de test pour les fonctions de prof.c (Stephane)
