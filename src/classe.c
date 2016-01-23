@@ -31,7 +31,33 @@ void AfficherClasse(Classe_t classe)
 
 
 
-void SupprimerEleve(Classe_t* tete)
+void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve)
+{
+	// Si ptr_eleve vaut NULL on sort de la fonction
+	if (ptr_eleve == NULL)
+		return;
+	
+	// Si l'élève est le premier de la classe alors le champ classe de ptr_classe pointer sur le deuxième élève
+	if (ptr_eleve->precedent == NULL)
+		ptr_classe->classe = ptr_eleve->suivant;
+	
+	// Si il est le dernier alors l'avant dernier eleve doit avoir son champ suivant sur NULL
+	else if (ptr_eleve->suivant == NULL)
+		ptr_eleve->precedent->suivant = NULL;
+	
+	// Si l'élève a supprimer est au milieu d'autre élève il faut l'enlever de là
+	else
+	{
+		ptr_eleve->precedent->suivant = ptr_eleve->suivant;
+		ptr_eleve->suivant->precedent = ptr_eleve->precedent;
+	}
+	
+	SupprimerEleve(ptr_eleve);
+}
+
+
+
+/*void SupprimerEleve(Classe_t* tete)
 {
 	Classe_t* ptr_c;
 
@@ -79,7 +105,7 @@ void SupprimerEleve(Classe_t* tete)
 			printf("\n\tCet eleve n'existe pas.\n");
 	}
 	classeCourant = classeCourant->suivant;
-}
+}*/
 
 void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom)
 {
