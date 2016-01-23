@@ -1,0 +1,28 @@
+TODO liste
+
+
+Très Important :
+
+	date.c :
+	- Ecrire la fonction CalculRentreeScolaire.
+	- Ecrire la fonction CalculerAge.
+	- Ecrire la fonction CategorieAge.
+	
+	eleve.c :
+	- Ajouter la fonction CreationEleve. (Redha)
+	- Ajouter la fonction SupprimerEleve. (Redha)
+	
+	classe.c :
+	- Ajouter la fonction AjouterEleveDansClasse.
+	- Ajouter la fonction RechercherEleveDansClasse.
+	
+	ecole.c :
+	- Ecrire la fonction AjouterEleveDansEcole.
+	- Ajouter la fonction RechercherEleveDansEcole.
+	- Ecrire la fonction SupprimerEleveDansEcole.
+	
+
+	
+Important :
+
+	- Ecrire un fichier de test pour les fonctions de date.c
