@@ -19,7 +19,7 @@ Très Important :
 	ecole.c :
 	- Ecrire la fonction AjouterEleveDansEcole.
 	- Ajouter la fonction RechercherEleveDansEcole.
-	- Ecrire la fonction SupprimerEleveDansEcole.
+	- (FAIT) Ecrire la fonction SupprimerEleveDansEcole. (Stephane)
 	
 
 	
