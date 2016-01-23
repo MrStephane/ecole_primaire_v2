@@ -7,12 +7,12 @@ ProjetEcolePrimaire.exe : fonctionAnnexe.o date.o eleve.o prof.o classe.o person
 
 
 # Test unitiaire
-test_unitaire_prof: test_unitaire_prof.o prof.o
+test_unitaire_prof: test_unitaire_prof.o prof.o fonctionAnnexe.o
 	$(Compilo) -o test_unitaire_prof.exe $^
 
 
 # Dépendances des tests unitaires
-test_unitaire_prof.o: test_unitaire_prof.c prof.h prof.o
+test_unitaire_prof.o: test_unitaire_prof.c prof.h prof.o fonctionAnnexe.o
 	$(Compilo) -c $<
 
 
@@ -47,4 +47,4 @@ MrProper :
 
 ResetAll :
 	echo "R.A.Z"
-	rm *.o ProjetEcolePrimaire.exe
+	rm *.o ProjetEcolePrimaire.exe test_unitaire_prof.exe
