@@ -36,6 +36,12 @@ eleve.h :
 	  
 	- void SupprimerEleve(Eleve_t *ptr_eleve);
 	  Libère la structure Eleve_t de la mémoire (free).
+	
+	- Eleve_t* DernierEleve(Eleve_t *courant)
+	  Permet de ce positionner sur le dernier élève.
+	 
+	- Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position);
+	  Renvoie un pointeur sur l'élève situé a la position passé en paramètre. Renvoie NULL sinon.
 	  
 
 prof.h :
