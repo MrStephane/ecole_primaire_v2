@@ -2,9 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
+
 #include "classe.h"
+
+
+
+
+void AfficherClasse(Classe_t classe)
+{
+	Eleve_t *ptr_eleveCourant = classe->classe;
+	
+	
+	// Si il n'y a pas d'élève dans la classe on sort de la fonction
+	if (ptr_eleveCourant == NULL)
+		return;
+	
+	while (ptr_eleveCourant->suivant != NULL)
+	{
+		AfficherEleve(*ptr_eleveCourant);
+		ptr_eleveCourant = ptr_eleveCourant->suivant;
+		
+		// Tant que l'on est pas sur le dernier élève, on saute des lignes
+		if (ptr_eleveCourant->suivant != NULL)
+			SautLigne(2);
+	}
+}
+
+
 
 void SupprimerEleve(Classe_t* tete)
 {
