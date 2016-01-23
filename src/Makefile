@@ -43,8 +43,8 @@ fichier.o : fichier.c fichier.h
 # Cibles fictives
 MrProper :
 	echo "Suppression des *.o"
-	rm *.o
+	rm -rf *.o
 
 ResetAll :
 	echo "R.A.Z"
-	rm *.o ProjetEcolePrimaire.exe test_unitaire_prof.exe
+	rm -rf *.o ProjetEcolePrimaire.exe test_unitaire_prof.exe
