@@ -17,5 +17,7 @@ int main(int argc, char* argv[])
 	
 	AfficherProf(*ptr_prof);
 	
+	SupprimerProf(ptr_prof);
+	
 	return 0;
 }
