@@ -11,6 +11,18 @@ date.h :
 	- void RecupererDate(struct tm *ptr_dateDuJour);
 	  Récupère la date du jour.
 	
+	- int ControleDate(struct tm d);
+	  Permet de savoir si une date est valide ou non.
+	
+	- void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire);
+	  Permet de calculer la date de rentré scolaire.
+	 
+	- int CalculerAge(struct tm dateJ, struct tm dateN);
+	  Retourne l'age en fonction de la date du jour de la date de naissance;
+	
+	- int CategorieAge(struct tm dateN, struct tm dateR);
+	  Retourne le catégorie d'age en fonction de la date de naissance et la date de rentré.
+	
 
 eleve.h :
 	- Eleve_t* CreationEleve(void);
@@ -47,7 +59,7 @@ classe.h :
 	- void AjouterEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 	  Ajoute un élève dans la classe, si posible.
 	  
-	- void SupprimerEleveDansClasse(Classe_t *ptr_classe);
+	- void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 	  Supprime un élève de la classe, si il existe.
 	  
 	- Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom);
