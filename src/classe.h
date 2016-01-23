@@ -58,4 +58,16 @@ void AfficherClasse(Classe_t classe);
  */
 void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
+
 #endif // CLASSE_H

@@ -57,55 +57,28 @@ void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve)
 
 
 
-/*void SupprimerEleve(Classe_t* tete)
+Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve)
 {
-	Classe_t* ptr_c;
-
-	Eleve_t* ptr_e;
-
-	Eleve_t* eleveCourant;
-
-	eleveCourant = tete->classe;
-
-	char nom[TAILLECHAINE];
-	char prenom[TAILLECHAINE];
-
-	Classe_t *classeCourant;
-
-    classeCourant = tete;
-       
-	printf("\n\tNom prenom : ");
-	scanf("%s %s", nom, prenom);
-	ViderBuffer();
-
-	NormaliserNomPrenom(NULL, nom, prenom);
-
-	ptr_e = RechercherEcole(nom, prenom, ecole);
-	
-	while(courant != NULL)
+	// Tant qu'on a pas parcouru toute les classes
+	while (ptr_classeCourante->suivant != NULL)
 	{
-		if (ptr_e != NULL)
-		{
-			ptr_c = RechercherClasse(ptr_e->nomClasse, ecole);
-
-			if (ptr_c->nbEleve > 0)
-			{
-				eleveCourant = classeCourant->classe;
-				while(eleveCourant->suivant !=NULL)
-					{
-						eleveCourant = eleveCourant->suivant;
-					}
-
-				CopieEleve(ptr_e, eleveCourant);
-				(ptr_c->nbEleve)--;
-				printf("\n\tEleve supprime.\n");
-			}
-		}
-		else
-			printf("\n\tCet eleve n'existe pas.\n");
+		// Si l'élève est dans cette classe alors on retourne le pointeur de la classe
+		if (RechercherEleveDansClasse(ptr_classeCourante, ptr_eleve->nom, ptr_eleve->prenom) != NULL)
+			return ptr_classeCourante;
+		
+		ptr_classeCourante = ptr_classeCourante->suivant;
 	}
-	classeCourant = classeCourant->suivant;
-}*/
+	
+	return NULL;
+}
+
+
+
+/********************************************
+ *  vvvvvv Fonction a modifier ou supprimer *
+ ********************************************/
+
+
 
 void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom)
 {
