@@ -73,6 +73,9 @@ classe.h :
 	
 	- Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
 	  Permet de recupérer un pointeur sur la classe de l'élève.
+	
+	- void RepartitionEleveDansClasse(Classe_t *ptr_classe)
+	  Reparti de manière équitable les élèves dans les deux classes de même niveau.
 
 	  
 personnel.h :

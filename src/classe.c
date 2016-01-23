@@ -74,6 +74,95 @@ Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_elev
 
 
 
+void RepartitionEleveDansClasse(Classe_t *ptr_classe)
+{
+	Eleve_t *ptr_eleve, *ptr_dernierEleve;
+	
+	char typeClasse[3]; // 'C' 'P' '\0', ou 'C' 'E' '\0', etc
+	
+	int nbEleveATranferer = 0;
+	
+	
+	
+	// Si ptr_classe est NULL on sort du programme.
+	if (ptr_classe == NULL)
+		exit(EXIT_FAILURE);
+	
+	strncpy(typeClasse, ptr_classe->nomClasse, 2);
+	
+	// Si la classe suivant existe et est une classe de même niveau
+	if (ptr_classe->suivant == NULL || strstr(ptr_classe->suivant->nomClasse, typeClasse) == NULL)
+		return;
+	
+	// Si la classe depasse le seuil
+	if (ptr_classe->nbEleve > SEUIL)
+	{
+		// On calcule combien d'élève vont devoir etre transféré dans l'autre classe
+		nbEleveATranferer = ptr_classe->nbEleve + ptr_classe->suivant->nbEleve;
+		nbEleveATranferer /= 2;
+		
+		// Si la classe a plus d'élève que la classe suivante
+		if (ptr_classe->nbEleve > ptr_classe->suivant->nbEleve)
+		{
+			// Tant qu'on a pas atteint le premier eleve de la liste d'élève à tranférer on passe au suivant
+			ptr_eleve = ElevePosition(ptr_classe->classe, ptr_classe->nbEleve - somme);
+			
+			// On recupère le dernier élève de la classe suivante
+			ptr_dernierEleve = DernierEleve(ptr_classe->suivant->classe);
+			
+			// Puis on transfère les élève dans l'autre classe.
+			ptr_dernierEleve->suivant = ptr_eleve;
+			
+			ptr_eleve->precedent->suivant = NULL;
+			ptr_eleve->precedent = ptr_dernierEleve;
+			
+			ptr_classe->nbEleve -= somme;
+			ptr_classe->suivant->nbEleve += somme;
+		}
+		else
+		{
+			// Tant qu'on a pas atteint le premier eleve de la liste d'élève à tranférer on passe au suivant
+			ptr_eleve = ElevePosition(ptr_classe->suivant->classe, ptr_classe->suivant->nbEleve - somme);
+			
+			// On recupère le dernier élève de la classe
+			ptr_dernierEleve = DernierEleve(ptr_classe->classe);
+			
+			// Puis on transfère les élève dans l'autre classe.
+			ptr_dernierEleve->suivant = ptr_eleve;
+			
+			ptr_eleve->precedent->suivant = NULL;
+			ptr_eleve->precedent = ptr_dernierEleve;
+			
+			ptr_classe->nbEleve += somme;
+			ptr_classe->suivant->nbEleve -= somme;
+		}
+	}
+	// Sinon si la classe suivante depasse le seuil
+	else if (ptr_classe->suivant->nbEleve > SEUIL)
+	{
+		// On calcule combien d'élève vont devoir etre transféré dans l'autre classe
+		nbEleveATranferer = ptr_classe->nbEleve + ptr_classe->suivant->nbEleve;
+		nbEleveATranferer /= 2;
+		
+		// Tant qu'on a pas atteint le premier eleve de la liste d'élève à tranférer on passe au suivant
+		ptr_eleve = ElevePosition(ptr_classe->suivant->classe, ptr_classe->suivant->nbEleve - somme);
+		
+		// On recupère le dernier élève de la classe
+		ptr_dernierEleve = DernierEleve(ptr_classe->classe);
+		
+		// Puis on transfère les élève dans l'autre classe.
+		ptr_dernierEleve->suivant = ptr_eleve;
+		
+		ptr_eleve->precedent->suivant = NULL;
+		ptr_eleve->precedent = ptr_dernierEleve;
+		
+		ptr_classe->nbEleve += somme;
+		ptr_classe->suivant->nbEleve -= somme;
+	}
+}
+
+
+
 /********************************************
  *  vvvvvv Fonction a modifier ou supprimer *
  ********************************************/

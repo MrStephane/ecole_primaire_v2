@@ -13,6 +13,9 @@
 #define CLASSE_H
 
 
+#define SEUIL 15
+
+
 
 /**************
  * Structures *
@@ -69,5 +72,18 @@ void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
  * *Description*
  */
 Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
+
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void RepartitionEleveDansClasse(Classe_t *ptr_classe);
+
 
 #endif // CLASSE_H
