@@ -46,16 +46,4 @@ typedef struct Classe
  */
 void AfficherClasse(Classe_t classe);
 
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-void SaisirClasse(Classe_t * ptr_classe);
-
 #endif // CLASSE_H
