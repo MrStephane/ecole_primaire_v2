@@ -16,46 +16,17 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
 	int categorie;
 	int genre;
-	int continuer = 0;
 
 	
 	// Si on a pas passé de nom en paramètre alors on le saisi
 	if (nom == NULL)
-	{
-		do
-		{
-			continuer = 1;
-			printf("\n\tNom : ");
-			scanf("%s", ptr_eleve->nom);
-			ViderBuffer();
-
-			if (ControleChaine(ptr_eleve->nom) == 0)
-			{
-				printf("\tEcrivez le nom sans chiffres ni accents.\n");
-				continuer = 0;
-			}
-		} while (!continuer);
-	}
+		SaisieChaineControle(ptr_eleve->nom, "\nNom : ");
 	else
 		strcpy(ptr_eleve->nom, nom);
 
 	// Si on a pas passé de prenom en paramètre alors on le saisi
 	if (prenom == NULL)
-	{
-		do
-		{
-			continuer = 1;
-			printf("\tPrenom : ");
-			scanf("%s", ptr_eleve->prenom);
-			ViderBuffer();
-
-			if (ControleChaine(ptr_eleve->prenom) == 0)
-			{
-				printf("\tEcrivez le prenom sans chiffres ni accents.\n");
-				continuer = 0;
-			}
-		} while (!continuer);
-	}
+		SaisieChaineControle(ptr_eleve->nom, "\nPrenom : ");
 	else
 		strcpy(ptr_eleve->prenom, prenom);
 
