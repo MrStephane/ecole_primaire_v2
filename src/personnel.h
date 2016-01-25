@@ -31,6 +31,7 @@ typedef struct Personnel
  * Fonctions *
  *************/
 
+Personnel_t* CreationPersonnel(void);
 
 /* Fonction : AfficherPersonnel()
  * ----------
