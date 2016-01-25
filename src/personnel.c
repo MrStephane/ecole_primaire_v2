@@ -9,7 +9,7 @@
 
 Personnel_t* CreationPersonnel(void)
 {
-	Personnel_t *ptr_ppersonnel;
+	Personnel_t *ptr_personnel;
 
 	ptr_personnel = (Personnel_t*) calloc(sizeof(Personnel_t));
 
