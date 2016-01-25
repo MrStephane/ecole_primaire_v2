@@ -86,4 +86,16 @@ Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_elev
 void RepartitionEleveDansClasse(Classe_t *ptr_classe);
 
 
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
+
+
 #endif // CLASSE_H

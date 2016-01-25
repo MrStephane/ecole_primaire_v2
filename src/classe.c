@@ -431,3 +431,29 @@ void RepartEleve(Classe* ecole)
         }
     }
 }
+
+**********************************************************************************************************
+**********************************************************************************************************
+*********************************A MODIFIER AjouterEleveDansClasse****************************************
+**********************************************************************************************************
+**********************************************************************************************************
+
+void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
+{
+	Eleve_t *eleveCourant;
+
+	
+
+
+	if(ptr_classe->nbeleve >= 25)
+	{
+		//Ouvrir une classe
+	}
+
+	else
+	{
+		eleveCourant = ptr_classe->classe;
+		eleveCourant = DernierEleve(eleveCourant);
+		eleveCourant->suivant = ptr_eleve;
+	}
+}
