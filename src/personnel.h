@@ -21,7 +21,7 @@ typedef struct Personnel
 	char nom[TAILLECHAINE];
 	char prenom[TAILLECHAINE];
 	char metier[TAILLECHAINE];
-	int nbPers = 0;
+	int nbPers;
 }Personnel_t;
 
 
