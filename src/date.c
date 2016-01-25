@@ -44,11 +44,11 @@ int ControleDate(struct tm d)
 	int dateValide = 0;
 
 
-	
+
 	// On modifie la date qui est formaté de manière spéciale avant de faire les tests
 	d.tm_year += 1900;
 	d.tm_mon += 1;
-	
+
 	if (d.tm_year < 1881) // Date vérifié par Redha au telephone. (François Hollande)
 	{
 		printf("\tErreur !\n");
@@ -103,4 +103,36 @@ int ControleDate(struct tm d)
 	}
 
 	return dateValide;
+}
+
+void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire)
+{
+	rentreeScolaire->tm_mday = 1;
+	rentreeScolaire->tm_mon = 9;
+
+	// Si le mois est inférieur à septembre alors la rentré scolaire c'est déroulé l'année précédente.
+	if (today.tm_mon < 9)
+		rentreeScolaire->tm_year = today.tm_year - 1;
+	// Sinon la rentré c'est déroulé la même année.
+	else
+		rentreeScolaire->tm_year = today.tm_year;
+}
+
+int CalculerAge(struct tm dateJ, struct tm dateN)
+{
+	// Si l'anniversaire n'a pas encore eu lieu
+	if (dateN.tm_mon > dateJ.tm_mon || (dateN.tm_mon == dateJ.tm_mon && dateN.tm_mday > dateJ.tm_mday))
+		return (dateJ.tm_year - dateN.tm_year) - 1;
+	else
+		return (dateJ.tm_year - dateN.tm_year);
+}
+
+int CategorieAge(struct tm dateN, struct tm dateR)
+{
+    // Si le mois de naissance est inférieur à Septembre il faut soutraire un an à l'année de naissance pour obtenir la bonne catégorie d'age
+	if (dateN.tm_mon < 9)
+        return (dateR.tm_year - (dateN.tm_year - 1));
+
+	// Sinon il suffit de soutraire année de la rentrée avec l'année de naissance tel quel
+	return (dateR.tm_year - dateN.tm_year);
 }
