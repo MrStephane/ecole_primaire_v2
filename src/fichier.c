@@ -17,7 +17,7 @@ int comptedonnees(FILE * fichier)
 		if(c == '\n')
 			compteur++;	// on incrémente le compteur a chaque saut de ligne
 	}
-	printf("\n\t Le fichier contient %d lignes\n", compteur);	// puis affichage de celui ci
+	//printf("\n\t Le fichier contient %d lignes\n", compteur);	// puis affichage de celui ci
 	
 	return compteur;	// on renvoie le nombre de lignes
 }
@@ -31,7 +31,7 @@ void gestionErreurs(FILE * fichier)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/*
 
 void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole)
 {
@@ -76,7 +76,7 @@ void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole)
 	}
 	fclose(fichier);)
 }
-/*
+*/
 
 void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 {
