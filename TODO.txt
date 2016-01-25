@@ -31,7 +31,7 @@ Important :
 	- Ecrire un fichier de test pour les fonctions de date.c
 	- Ecrire un fichier de test pour les fonctions de eleve.c
 	- Ecrire un fichier de test pour les fonctions de classe.c
-	- Ecrire un fichier de test pour les fonctions de fichier.c
+	- (EN COURS) Ecrire un fichier de test pour les fonctions de fichier.c (Vincent)
 	- Ecrire un fichier de test pour les fonctions de ecole.c
 	- Ecrire un fichier de test pour les fonctions de personnel.c
 	- (FAIT) Ecrire un fichier de test pour les fonctions de prof.c (Stephane)
