@@ -6,9 +6,17 @@
 #include <time.h>
 #include "eleve.h"
 
-*********************************
-//Appel de la fonction creerEleve
-*********************************
+Eleve_t* CreationEleve(void)
+{
+  Eleve_t* ptr_eleve;
+  ptr_eleve = malloc(Eleve_t* sizeof(struct Eleve_t));
+
+  if(ptr_eleve == NULL)
+    exit(EXIT_FAILURE);
+
+  return ptr_eleve;
+}
+
 
 void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 {

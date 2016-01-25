@@ -1,4 +1,4 @@
-TODO list
+﻿TODO list
 
 
 Très Important :
@@ -9,7 +9,7 @@ Très Important :
 	- Ecrire la fonction CategorieAge.
 	
 	eleve.c :
-	- Ajouter la fonction CreationEleve. (Redha)
+	- Ajouter la fonction CreationEleve. (Redha) **FAIT**
 	- Ajouter la fonction SupprimerEleve. (Redha)
 	
 	classe.c :

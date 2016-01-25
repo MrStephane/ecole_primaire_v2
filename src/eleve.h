@@ -40,6 +40,16 @@ typedef struct Eleve
  * Fonctions *
  *************/
 
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+ Eleve_t* CreationEleve(void)
+
 
 /* Fonction :
  * ----------
