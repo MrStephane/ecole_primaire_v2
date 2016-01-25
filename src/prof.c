@@ -13,7 +13,7 @@ Prof_t* CreationProf(void)
 {
 	Prof_t *ptr_prof;
 	
-	ptr_prof = (Prof_t*) calloc(sizeof(Prof_t));
+	ptr_prof = (Prof_t*) calloc(1, sizeof(Prof_t));
 	
 	if (ptr_prof == NULL)
 		exit(EXIT_FAILURE);
