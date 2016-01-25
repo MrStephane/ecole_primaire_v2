@@ -4,9 +4,9 @@
 Très Important :
 
 	date.c :
-	- (en cours) Ecrire la fonction CalculRentreeScolaire.
-	- (en cours) Ecrire la fonction CalculerAge.
-	- (en cours) Ecrire la fonction CategorieAge.
+	- (FAIT) Ecrire la fonction CalculRentreeScolaire.(clement)
+	- (FAIT) Ecrire la fonction CalculerAge.(clement)
+	- (FAIT) Ecrire la fonction CategorieAge.(clement)
 	
 	eleve.c :
 	- Ajouter la fonction CreationEleve. (Redha) **FAIT**
