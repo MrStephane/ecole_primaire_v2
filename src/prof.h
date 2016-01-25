@@ -36,24 +36,24 @@ typedef struct Prof
  *************/
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+/* Fonction : CreationProf
+ * -----------------------
+ * Entrée : Aucune
+ * Sortie : Un pointeur sur le prof créé.
+ *  Usage : ptr_prof = CreationProf();
+ * -----------------------
+ * Créé en mémoire une structure prof initialisé à 0.
  */
 Prof_t* CreationProf(void);
 
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
+/* Fonction : AfficherProf
+ * -----------------------
+ * Entrée : prof - Le prof dont on souhaite afficher les infos.
+ * Sortie : Aucune.
+ *  Usage : AfficherProf(prof);
+ * -----------------------
  * *Description*
  */
 void AfficherProf(Prof_t prof);
