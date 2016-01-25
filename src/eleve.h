@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
 
 #include "date.h"
 
+
+
 #ifndef ELEVE_H
 #define ELEVE_H
 
-//#define TAILLECHAINE 50
 
 
 

@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
 
 #include "fichier.h"
+
+
 
 int comptedonnees(FILE * fichier)
 {
@@ -21,6 +22,7 @@ int comptedonnees(FILE * fichier)
 	
 	return compteur;	// on renvoie le nombre de lignes
 }
+
 
 
 void gestionErreurs(FILE * fichier)

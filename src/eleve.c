@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
+
 #include "eleve.h"
+
+
 
 Eleve_t* CreationEleve(void)
 {
@@ -16,6 +18,7 @@ Eleve_t* CreationEleve(void)
 
   return ptr_eleve;
 }
+
 
 
 void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
@@ -111,6 +114,8 @@ Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position)
 	else
 		return NULL;
 }
+
+
 
 void SupprimerEleve(Eleve_t *ptr_eleve);
 {

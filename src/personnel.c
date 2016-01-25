@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
 
 #include "personnel.h"
+
+
 
 Personnel_t* CreationPersonnel(void)
 {
@@ -18,6 +19,8 @@ Personnel_t* CreationPersonnel(void)
 
 	return ptr_personnel;
 }
+
+
 
 void SaisirPersonnel(Personnel_t * ptr_personnel)
 {
@@ -111,10 +114,13 @@ void AfficherPersonnel(Personnel_t personnel)
 	printf("\t%s : %s %s %s", personnel.metier, personnel.civilite, personnel.nom, personnel.prenom);
 }
 
+
+
 void SupprimerPersonnel(Personnel_t *ptr_personnel)
 {
 	free(ptr_personnel);
 }
+
 
 
 // Clement et Vincent

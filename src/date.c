@@ -105,6 +105,8 @@ int ControleDate(struct tm d)
 	return dateValide;
 }
 
+
+
 void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire)
 {
 	rentreeScolaire->tm_mday = 1;
@@ -118,6 +120,8 @@ void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire)
 		rentreeScolaire->tm_year = today.tm_year;
 }
 
+
+
 int CalculerAge(struct tm dateJ, struct tm dateN)
 {
 	// Si l'anniversaire n'a pas encore eu lieu
@@ -126,6 +130,8 @@ int CalculerAge(struct tm dateJ, struct tm dateN)
 	else
 		return (dateJ.tm_year - dateN.tm_year);
 }
+
+
 
 int CategorieAge(struct tm dateN, struct tm dateR)
 {

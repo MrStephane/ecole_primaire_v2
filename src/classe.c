@@ -159,6 +159,8 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 	}
 }
 
+
+
 Eleve* RechercherEcole(char *nom, char *prenom, Classe_t *courant)
 {
     int i;
@@ -180,6 +182,8 @@ Eleve* RechercherEcole(char *nom, char *prenom, Classe_t *courant)
 
     return 0;
 }
+
+
 
 void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
 {
@@ -327,6 +331,8 @@ void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
     }
 }
 
+
+
 Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom)
 {
 	Eleve* eleveCourant = ptr_classe->classe;
@@ -344,6 +350,8 @@ Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom
 		return NULL;
 	}
 } 
+
+
 
 void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 {

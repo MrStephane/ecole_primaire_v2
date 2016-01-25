@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
+
 #include "fichier.h"
 #include "ecole.h"
 #include "personnel.h"
