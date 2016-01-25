@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <string.h>
-#include <time.h>
-
 #include "prof.h"
 
 
@@ -36,27 +29,9 @@ void SaisirProf(Prof_t *ptr_p)
     int continuer = 0;
 
 
-	do
-	{
-		printf("Saisir la civilite du professeur ( Monsieur, Madame, Mademoiselle ) : ");
-		scanf("%s", ptr_p->civilite);
-		ViderBuffer();
-		printf("Entrez le nom du professeur : ");
-		scanf("%s", ptr_p->nom);
-		ViderBuffer();
-		printf("Entrez le prenom du professeur : ");
-		scanf("%s", ptr_p->prenom);
-		ViderBuffer();
-
-		if (ControleChaine(ptr_p->civilite)==0 || ControleChaine(ptr_p->nom) == 0 || ControleChaine(ptr_p->prenom) == 0)
-		{
-			RetourLigne(1);
-			printf("Ecrivez le nom, le prenom et la civilite sans chiffres ni accents.\n");
-			RetourLigne(1);
-		}
-		else
-			continuer = 1;
-	} while (!continuer);
+	SaisieChaineControle("Saisir la civilite du professeur ( Monsieur, Madame, Mademoiselle ) : ", ptr_p->civilite);
+	SaisieChaineControle("Entrez le nom du professeur : ", ptr_p->nom);
+	SaisieChaineControle("Entrez le prenom du professeur : ", ptr_p->prenom);
 
 	NormaliserNomPrenom(ptr_p->civilite, ptr_p->nom, ptr_p->prenom);
 }

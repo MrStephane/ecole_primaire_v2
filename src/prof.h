@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <string.h>
 #include <time.h>
 
 #include "fonctionAnnexe.h"
@@ -25,8 +24,7 @@ typedef struct Prof
 {     
 	char civilite[13]; // max ==> 'Mademoiselle' - 12 lettres + '\0'     
 	char nom[TAILLECHAINE];     
-	char prenom[TAILLECHAINE];     
-	int age; 
+	char prenom[TAILLECHAINE];
 }Prof_t;
 
 
@@ -52,33 +50,33 @@ Prof_t* CreationProf(void);
  * -----------------------
  * Entrée : prof - Le prof dont on souhaite afficher les infos.
  * Sortie : Aucune.
- *  Usage : AfficherProf(prof);
+ *  Usage : AfficherProf(professeur);
  * -----------------------
- * *Description*
+ * Affiche les informations d'un prof.
  */
 void AfficherProf(Prof_t prof);
 
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+/* Fonction : SaisirProf
+ * ---------------------
+ * Entrée : ptr_prif - Pointeur sur le prof à saisir.
+ * Sortie : Aucune
+ *  Usage : SaisirProf(ptr_prof);
+ * ---------------------
+ * Saisie les informations d'un professeur.
  */
 void SaisirProf(Prof_t* ptr_prof);
 
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+/* Fonction : SupprimerProf
+ * ------------------------
+ * Entrée : ptr_prof - Pointeur sur le prof à supprimer.
+ * Sortie : Aucune
+ *  Usage : SupprimerProf(ptr_prof);
+ * ------------------------
+ * Supprime le prof de la mémoire.
  */
 void SupprimerProf(Prof_t *ptr_prof);
 
