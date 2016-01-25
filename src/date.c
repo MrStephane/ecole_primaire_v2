@@ -20,9 +20,9 @@ void RecupererDate(struct tm *ptr_d)
 
 
 
-void AfficherDate(struct tm ptr_d)
+void AfficherDate(struct tm date)
 {
-    printf("%d/%d/%d", ptr_d.tm_mday, ptr_d.tm_mon, ptr_d.tm_year);
+    printf("%d/%d/%d", date.tm_mday, date.tm_mon, date.tm_year);
 }
 
 
