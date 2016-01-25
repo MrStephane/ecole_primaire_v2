@@ -26,7 +26,7 @@ typedef struct Classe
 	char nomClasse[5];
 	Prof* professeur;
 	int nbEleve;
-	Eleve* classe;
+	Eleve* premierEleve;
 	struct Classe *suivant;
 }Classe_t;
 
@@ -47,44 +47,6 @@ typedef struct Classe
  * Affiche les infos de la classe ainsi que la liste d'élève.
  */
 void AfficherClasse(Classe_t classe);
-
-
-
-/* Fonction : SupprimerEleveDansClasse
- * -----------------------------------
- * Entrée : ptr_classe - Pointeur sur la classe qui contient l'élève à supprimer.
- * 			 ptr_eleve - Pointeur sur l'élève à supprimer.
- * Sortie : Aucune.
- *  Usage : SupprimerEleveDansClasse(ptr_classe, ptr_eleve);
- * -----------------------------------
- * Supprime un élève de la classe passé en paramètre.
- */
-void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
-
-
-
-/* Fonction : RechercherClasseEleve
- * --------------------------------
- * Entrée : ptr_classeCourante - Pointeur sur la première classe à parcourir.
- *					 ptr_eleve - Pointeur sur l'élève dont on recherche la classe.
- * Sortie : Un pointeur sur la classe de l'élève si il y en à une. Renvoie NULL sinon.
- *  Usage : ptr_classeEleve = RechercherClasseEleve(ptr_premiereClasse, ptr_eleve);
- * --------------------------------
- * Récupère la pointeur de la classe à laquelle l'élève appartient.
- */
-Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
-
-
-
-/* Fonction : RepartitionEleveDansClasse
- * -------------------------------------
- * Entrée : ptr_classe - Pointeur sur la classe qu'il faut répartir équitablement.
- * Sortie : Aucune.
- *  Usage : RepartitionEleveDansClasse(ptr_classe);
- * -------------------------------------
- * Répartie équitablement les élève dans les classes si c'est nécéssaire.
- */
-void RepartitionEleveDansClasse(Classe_t *ptr_classe);
 
 
 
@@ -112,6 +74,70 @@ Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom
  * Ajoute un élève dans la classe quand c'est possible.
  */
 void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve);
+
+
+
+/* Fonction : RetirerEleveDansClasse
+ * ---------------------------------
+ * Entrée : ptr_classe - Pointeur sur la classe ou l'on souhaite retirer l'élève.
+ *			 ptr_eleve - Pointeur sur l'léève à retirer.
+ * Sortie : Aucune.
+ *  Usage : RetirerEleveDansClasse(ptr_classe, ptr_eleve);
+ * ---------------------------------
+ * Retire un élève de la classe quand c'est possible sans le supprimer de la mémoire.
+ */
+void RetirerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
+
+
+
+/* Fonction : SupprimerEleveDansClasse
+ * -----------------------------------
+ * Entrée : ptr_classe - Pointeur sur la classe qui contient l'élève à supprimer.
+ * 			 ptr_eleve - Pointeur sur l'élève à supprimer.
+ * Sortie : Aucune.
+ *  Usage : SupprimerEleveDansClasse(ptr_classe, ptr_eleve);
+ * -----------------------------------
+ * Supprime un élève de la classe passé en paramètre.
+ */
+void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
+
+
+
+/* Fonction : RechercherClasseEleve
+ * --------------------------------
+ * Entrée : ptr_classeCourante - Pointeur sur la première classe à parcourir.
+ *					 ptr_eleve - Pointeur sur l'élève dont on recherche la classe.
+ * Sortie : Un pointeur sur la classe de l'élève si il y en à une. Renvoie NULL sinon.
+ *  Usage : ptr_classeEleve = RechercherClasseEleve(ptr_premiereClasse, ptr_eleve);
+ * --------------------------------
+ * Récupère le pointeur de la classe à laquelle l'élève appartient.
+ */
+Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
+
+
+
+/* Fonction : RechercherNiveauClasse
+ * ---------------------------------
+ * Entrée : ptr_classeCourante - Pointeur sur la première classe à parcourir.
+ *					 ptr_eleve - Pointeur sur l'élève dont on recherche le niveau de classe.
+ * Sortie : Un pointeur sur la classe de l'élève si il y en à une. Renvoie NULL sinon.
+ *  Usage : ptr_niveauClasse = RechercherNiveauClasse(ptr_premiereClasse, ptr_eleve);
+ * ---------------------------------
+ * Récupère le pointeur de la classe de niveau correspondant à l'élève.
+ */
+Classe_t* RechercherNiveauClasse(Classe_t *ptr_classeCourante, Eleve_t *ptr_eleve);
+
+
+
+/* Fonction : RepartitionEleveDansClasse
+ * -------------------------------------
+ * Entrée : ptr_classe - Pointeur sur la classe qu'il faut répartir équitablement.
+ * Sortie : Aucune.
+ *  Usage : RepartitionEleveDansClasse(ptr_classe);
+ * -------------------------------------
+ * Répartie équitablement les élève dans les classes si c'est nécéssaire.
+ */
+void RepartitionEleveDansClasse(Classe_t *ptr_classe);
 
 
 #endif // CLASSE_H
