@@ -9,17 +9,13 @@
 
 
 
-void AjouterEleveDansEcole(Ecole_t *ptr_ecole)
+void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 {
-	Classe_t *ptr_classeCourante = ptr_ecole->premiereClasse;
+	Classe_t *ptr_classe;
+	
 	Eleve_t *ptr_eleve; 
 	
-	char nom[TAILLECHAINE];
-	char prenom[TAILLECHAINE];
 	
-	// Demande le nom et prenom de l'élève
-	SaisieChaineControle(nom, "Veuillez saisir le nom de l'eleve : ");
-	SaisieChaineControle(prenom, "Veuillez saisir le prenom de l'eleve : ");
 	
 	// Appel a CreationEleve pour créer l'espace d'un eleve en memoire
 	ptr_eleve = CreationEleve();
@@ -28,35 +24,24 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole)
 	SaisirEleve(ptr_classe, nom, prenom);
 	
 	// Recherche de la classe qui correspond au niveau de l'élève
-	while(ptr_classeCourante != NULL)
-	{
-		// Si on la trouve alors on fait appel a AjouterEleveDansClasse
-		if(strncmp(ptr_classe->nomClasse, ptr_eleve->nomClasse, 2) == 0)
-			AjouterEleveDansClasse(ptr_classeCourante, ptr_eleve);
-
-		ptr_classeCourante = ptr_classeCourante->suivant;
-	}
-		
-	// Si on l'a trouve pas on supprime l'élève de la mémoire
-	if(ptr_classeCourante == 0)
-	SupprimerEleve(ptr_eleve);
+	ptr_classe = RechercherNiveauClasse(ptr_ecole->premiereClasse, ptr_eleve);
+	
+	if (ptr_classe != NULL)
+		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
+	else
+		SupprimerEleve(ptr_eleve);
+	
 
 	//Liste d'attente.
 }
 
 
 
-Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole)
+Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom)
 {
-	Classe_t* ptr_classeCourante;
-	ptr_classeCourante = ptr_ecole->premiereClasse;
-
-	char nom[TAILLECHAINE];
-	char prenom[TAILLECHAINE];
-
-	SaisieChaineControle(nom, "Veuillez saisir le nom de l'eleve : ");
-	SaisieChaineControle(prenom, "Veuillez saisir le prenom de l'eleve : ");
-
+	Classe_t* ptr_classeCourante = ptr_ecole->premiereClasse;
+	
+	
 	// Tant qu'on a pas parcouru toute les classes
 	while (ptr_classeCourante->suivant != NULL)
 	{
@@ -72,23 +57,15 @@ Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole)
 
 
 
-void SupprimerEleveDansEcole(Ecole_t *ptr_ecole)
+void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 {
-	Eleve_t *ptr_eleve;
 	Classe_t *ptr_classe;
 	
-	char nom[TAILLECHAINE];
-	char prenom[TAILLECHAINE];
+	Eleve_t *ptr_eleve;
 	
 	
 	
-	printf("\n\tNom prenom : ");
-	scanf("%s %s", nom, prenom);
-	ViderBuffer();
-
-	NormaliserNomPrenom(NULL, nom, prenom);
-	
-	ptr_eleve = RechercherEleveDansEcole(ptr_ecole);
+	ptr_eleve = RechercherEleveDansEcole(ptr_ecole, nom, prenom);
 	
 	if (ptr_eleve == NULL)
 	{
@@ -101,4 +78,71 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole)
 		printf("Erreur dans la recherche de la classe");
 	else
 		SupprimerEleveDansClasse(ptr_classe, ptr_eleve);
+}
+
+
+
+void ModificationEleve(Ecole_t *ptr_ecole, char *nom, char* prenom)
+{
+	Classe_t *ptr_classe, *ptr_ancienneClasse;
+	
+	Eleve_t *ptr_eleve;
+	
+	char choix;
+	
+	int continuer = 0;
+	
+	
+	
+	ptr_eleve = RechercherEleveDansEcole(ptr_ecole, nom, prenom);
+	
+	// Si l'élève n'existe pas.
+	if (ptr_eleve == NULL)
+		Printf("Cet eleve n'existe pas.\n");
+	
+	// On recupère sa classe pour plus tard
+	ptr_ancienneClasse = RechercherClasseEleve(ptr_ecole->premiereClasse, ptr_eleve);
+	
+	printf("Modification de l'eleve :\n\n");
+	
+	SaisirEleve(ptr_eleve, NULL, NULL);
+	
+	RetourLigne(2);
+	
+	do
+	{
+		printf("Voulez-vous modifier l'emplacement de l'élève ? (O/n) ");
+		scanf("%c", &choix);
+		ViderBuffer();
+		
+		switch(choix)
+		{
+			case 'O':
+			case 'o':
+				// On recherche une classe corespondant à son nouveau niveau
+				ptr_classe = RechercherNiveauClasse(ptr_ecole->premiereClasse, ptr_eleve);
+				
+				// Si on l'a trouvé alors on l'ajoute dans la nouvelle classe
+				if (ptr_classe != NULL)
+				{
+					// On retire l'élève de son ancienne classe
+					RetirerEleveDansClasse(ptr_ancienneClasse, ptr_eleve);
+					// On l'ajoute dans la nouvelle
+					AjouterEleveDansClasse(ptr_classe, ptr_eleve);
+				}
+				// Sinon on le laisse ou il est.
+				else
+					printf("L'eleve ne peux pas aller dans une autre classe");
+					// Eventuellement proposer de le supprimer
+				
+				continuer = 1;
+				break;
+			case 'N':
+			case 'n':
+				continuer = 1;
+				break;
+			default:
+				printf("Choix non valide !\n");
+		}
+	} while (!continuer);
 }
