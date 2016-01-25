@@ -11,7 +11,10 @@
 Eleve_t* CreationEleve(void)
 {
   Eleve_t* ptr_eleve;
-  ptr_eleve = malloc(Eleve_t* sizeof(struct Eleve_t));
+  
+  
+  
+  ptr_eleve = (Eleve_t*) calloc(1, sizeof(Eleve_t));
 
   if(ptr_eleve == NULL)
     exit(EXIT_FAILURE);
@@ -29,7 +32,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 	int genre;
 
 	
-	// Si on a pas passé de nom en paramètre alors on le saisi
+	// Si on a pas passé de nom en paramètre alors on le saisit
 	if (nom == NULL)
 		SaisieChaineControle(ptr_eleve->nom, "\nNom : ");
 	else
@@ -78,8 +81,8 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
 void AfficherEleve(Eleve_t eleve, char* nom, char* prenom)
 {
-    printf("\t| %s %s\n", eleve.nom, eleve.prenom);
-    printf("\t| Ne le ");
+    printf("%s %s\n", eleve.nom, eleve.prenom);
+    printf("Ne le ");
     AfficherDate(eleve.dateDeNaissance);
     RetourLigne(2);
 }
