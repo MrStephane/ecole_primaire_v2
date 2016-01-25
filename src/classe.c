@@ -7,8 +7,6 @@
 #include "classe.h"
 
 
-
-
 void AfficherClasse(Classe_t classe)
 {
 	Eleve_t *ptr_eleveCourant = classe->classe;
@@ -159,80 +157,6 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 		ptr_classe->nbEleve += somme;
 		ptr_classe->suivant->nbEleve -= somme;
 	}
-}
-
-
-
-/********************************************
- *  vvvvvv Fonction a modifier ou supprimer *
- ********************************************/
-
-
-
-void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom)
-{
-	Eleve e;	// Structure d'élève provisoire
-
-	Classe_t * classeDispo;	// Pointeur sur une classe s'il y en a une de disponible
-
-
-	SaisirEleve(&e, nom, prenom);
-
-	// Si l'élève existe déja alors on ne l'enregistre pas
-	if (RechercherEcole(e.nom, e.prenom, ecole) != NULL)
-	{
-		printf("\n\tCet eleve existe deja.\n");
-		RetourLigne(1);
-		return;
-	}
-
-	// Si l'enfant saisi n'a pas le niveau de l'école primaire on ne l'enregistre pas.
-	if (strcmp(e.nomClasse, "NULL") == 0)
-	{
-        printf("\n\tCet enfant n'a pas l'age requit pour l'ecole primaire.\n");
-		return;
-	}
-
-	classeDispo = RechercherClasseDispo(e.nomClasse, ecole);
-
-	// Si il y a une classe disponible dans le niveau de l'élève alors on l'enregistre dans la classe et on augmente le nombre d'élève de celle-ci
-	if (classeDispo != NULL)
-	{
-		// Si il s'agit d'une nouvelle classe alors on incrémente le nombre de classes
-		if (classeDispo->nbEleve == 0)
-        {
-            printf("\n\tUne nouvelle classe vient d'etre ouverte.\n");
-			RetourLigne(2);
-			printf("\tVeuillez saisir le nouveau professeur :\n");
-            SaisirProf(&classeDispo->professeur);
-            ++(*nbClasses);
-        }
-
-		strcpy(e.nomClasse, classeDispo->nomClasse);
-
-		// On enregistre définitivement l'élève dans la première place disponible dans la classe.
-
-		while(classeCourant->suivant !=NULL)
-					{
-						eleveCourant = eleveCourant->suivant;
-					}
-
-		CopieEleve(&classeDispo->classe[classeDispo->nbEleve], e);
-		++(classeDispo->nbEleve);
-		RepartEleve(ecole);
-
-		ClasserEleve(classeDispo);
-	}
-
-	else
-	{
-		printf("\tIl n'y a plus de place disponible en %s.\n\tCet eleve est place sur liste d'attente\n", e.nomClasse);
-        CopieEleve(&listeAttente[*nbEleveListe], e);
-		++*nbEleveListe;
-		//printf("\n\tIl n'y a plus de classe disponible en %s.\n\n\n", e.nomClasse);
-	}
-
-    RetourLigne(2);
 }
 
 Eleve* RechercherEcole(char *nom, char *prenom, Classe_t *courant)
@@ -403,36 +327,6 @@ void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
     }
 }
 
-void RepartEleve(Classe* ecole)
-{
-	int i;
-
-
-	for (i=0; i<NBCLASSEMAX; i=i+2)
-    {
-        // Si la première classe dépasse le seuil d'élève
-        if (ecole[i].nbEleve > SEUIL)
-        {
-            while(ecole[i].nbEleve > ecole[i+1].nbEleve+1)
-            {
-                CopieEleve(&ecole[i+1].classe[ecole[i+1].nbEleve], ecole[i].classe[ecole[i].nbEleve-1]);
-                --ecole[i].nbEleve;
-                ++ecole[i+1].nbEleve;
-            }
-        }
-        else if (ecole[i+1].nbEleve > SEUIL)
-        {
-            while(ecole[i].nbEleve < ecole[i+1].nbEleve)
-            {
-                CopieEleve(&ecole[i].classe[ecole[i].nbEleve], ecole[i+1].classe[ecole[i+1].nbEleve-1]);
-                --ecole[i+1].nbEleve;
-                ++ecole[i].nbEleve;
-            }
-        }
-    }
-}
-
-
 Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom)
 {
 	Eleve* eleveCourant = ptr_classe->classe;
@@ -451,18 +345,9 @@ Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom
 	}
 } 
 
-**********************************************************************************************************
-**********************************************************************************************************
-*********************************A MODIFIER AjouterEleveDansClasse****************************************
-**********************************************************************************************************
-**********************************************************************************************************
-
 void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 {
 	Eleve_t *eleveCourant;
-
-	
-
 
 	if(ptr_classe->nbeleve >= 25)
 	{
