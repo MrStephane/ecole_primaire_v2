@@ -10,7 +10,7 @@ Très Important :
 	
 	eleve.c :
 	- Ajouter la fonction CreationEleve. (Redha) **FAIT**
-	- Ajouter la fonction SupprimerEleve. (Redha)
+	- Ajouter la fonction SupprimerEleve. (Redha) **FAIT**
 	
 	classe.c :
 	- Ajouter la fonction AjouterEleveDansClasse.

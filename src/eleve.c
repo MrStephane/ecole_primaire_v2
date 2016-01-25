@@ -111,3 +111,8 @@ Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position)
 	else
 		return NULL;
 }
+
+void SupprimerEleve(Eleve_t *ptr_eleve);
+{
+   free(ptr_eleve);
+}
