@@ -95,6 +95,18 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe);
  * ----------
  * *Description*
  */
+Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom);
+
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
 void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 
 

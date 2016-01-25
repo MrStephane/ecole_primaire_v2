@@ -432,6 +432,25 @@ void RepartEleve(Classe* ecole)
     }
 }
 
+
+Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom)
+{
+	Eleve* eleveCourant = ptr_classe->classe;
+
+	while (strcmp(eleveCourant->nom, nom) != 0 && strcmp(eleveCourant->prenom, prenom) != 0 && eleveCourant->suivant != NULL)
+		eleveCourant = eleveCourant->suivant;
+
+	if(strcmp(eleveCourant->nom, nom) == 0 && strcmp(eleveCourant->prenom, prenom) ==0)
+	{
+		return eleveCourant;
+	}
+
+	else
+	{
+		return NULL;
+	}
+} 
+
 **********************************************************************************************************
 **********************************************************************************************************
 *********************************A MODIFIER AjouterEleveDansClasse****************************************
