@@ -20,6 +20,7 @@ Très Important :
 	- Ecrire la fonction AjouterEleveDansEcole. (Redha) **FAIT A 90%**
 	- Ajouter la fonction RechercherEleveDansEcole. (Redha) **FAIT**
 	- (FAIT) Ecrire la fonction SupprimerEleveDansEcole. (Stephane)
+	- (FAIT) Faire une fonction de modification d'un élève. (Stéphane)
 
 	personnel.c
 	- (FAIT) ajouter la fonction CreerPersonnel (clément)
