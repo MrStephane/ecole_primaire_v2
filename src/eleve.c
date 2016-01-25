@@ -86,11 +86,9 @@ void AfficherEleve(Eleve_t eleve, char* nom, char* prenom)
 
 
 
-void CopieEleve(Eleve_t* eleveCopie, Eleve_t eleveACopie)
+void SupprimerEleve(Eleve_t *ptr_eleve);
 {
-	eleveCopie->precedent->suivant = eleveACopie;
-	eleveACopie->precedent = eleveCopie->precedent;
-	eleveACopie->suivant = eleveCopie->suivant;
+   free(ptr_eleve);
 }
 
 
@@ -117,7 +115,14 @@ Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position)
 
 
 
-void SupprimerEleve(Eleve_t *ptr_eleve);
+Eleve_t* DernierEleve(Eleve_t *ptr_eleveCourant)
 {
-   free(ptr_eleve);
+	if (ptr_eleveCourant == NULL)
+		return NULL;
+	
+	// Tant qu'on est pas sur le dernier élève.
+	while (ptr_eleveCourant->suivant != NULL)
+		ptr_eleveCourant = ptr_eleveCourant->suivant;
+	
+	return ptr_eleveCourant;
 }

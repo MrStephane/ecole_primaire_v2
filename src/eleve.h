@@ -39,114 +39,76 @@ typedef struct Eleve
  * Fonctions *
  *************/
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+ 
+/* Fonction : CreationEleve
+ * ------------------------
+ * Entrée : Aucune.
+ * Sortie : Un pointeur sur l'élève créé.
+ *  Usage : ptr_eleve = CreationEleve();
+ * ------------------------
+ * Créé un élève initialisé à 0 en mémoire?
  */
  Eleve_t* CreationEleve(void);
 
 
-/* Fonction :
+/* Fonction : SaisirEleve
+ * ----------------------
+ * Entrée : ptr_eleve - Pointeur sur l'élève à saisir.
+ *				  nom - Nom de l'élève. (Optionnel)
+ *			   prenom - Prénom de l'élève. (Optionnel)
+ * Sortie : Aucune.
+ *  Usage : SaisirEleve(ptr_eleve, nom, prenom); OU SaisirEleve(ptr_eleve, NULL, NULL);
  * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+ * Saisie les informations d'un élève.
  */
-void SaisirEleve(Eleve_t* ptr_eleve);
+void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom);
 
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+/* Fonction : AfficherEleve
+ * ------------------------
+ * Entrée : eleve - Elève à afficher.
+ * Sortie : Aucune.
+ *  Usage : AfficherEleve(eleve);
+ * ------------------------
+ * Affiche les informations d'un élève.
  */
 void AfficherEleve(Eleve_t eleve);
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+
+
+/* Fonction : SupprimerEleve
+ * -------------------------
+ * Entrée : ptr_eleve - Pointeur sur l'élève à supprimer.
+ * Sortie : Aucune.
+ *  Usage : SupprimerEleve(ptr_eleve);
+ * -------------------------
+ * Supprime un élève de la mémoire.
  */
-void SupprimerEleve(Classe_t* tete);
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom);
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-Eleve* RechercherEleve(char* nom, char* prenom, Classe_t* c);
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-void MiseAJourEleve(Classe_t* ecole, int* nbClasses);
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie);
-
-
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-Eleve_t* DernierEleve(Eleve_t *courant);
+void SupprimerEleve(Classe_t* ptr_eleve);
 
 
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
+/* Fonction : ElevePosition
+ * ------------------------
+ * Entrée : ptr_eleveCourant - Pointeur sur un premier élève.
+ *					position - Position de l'élève que l'on veut récupérer dans la classe.
+ * Sortie : Pointeur sur l'élève si il existe.
+ *  Usage : ptr_eleve = ElevePosition(ptr_eleveCourant, position);
+ * ------------------------
+ * Recupère un pointeur sur l'élève situé à une position spécifique dans la classe.
  */
 Eleve_t* ElevePosition(Eleve_t *ptr_eleveCourant, int position);
+
+
+/* Fonction : DernierEleve
+ * -----------------------
+ * Entrée : ptr_eleveCourant - Pointeur d'élève? Variable de parcours.
+ * Sortie : Un pointeur sur le dernier élève. Renvoie NULL sinon.
+ *  Usage : ptr_dernierEleve = DernierEleve(ptr_elveCourant);
+ * -----------------------
+ * Recupère un pointeur sur le dernier élève d'une classe.
+ */
+Eleve_t* DernierEleve(Eleve_t *ptr_eleveCourant);
 
 #endif // ELEVE_H
