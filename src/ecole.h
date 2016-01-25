@@ -5,9 +5,6 @@
 #define ECOLE_H
 
 
-#define TAILLECHAINE 40
-
-
 
 /**************
  * Structures *

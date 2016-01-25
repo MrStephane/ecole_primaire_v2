@@ -32,6 +32,48 @@ void gestionErreurs(FILE * fichier)
 	}
 }
 
+
+void SaveBinaireBaseEleve(char *nomFichier, Ecole_t ecole)
+{
+	FILE * fichier;
+	Classe_t* positionClasse = ecole.premiereClasse;
+	Eleve_t* positionEleve = premiereClasse->classe;
+	
+	fichier = fopen(nomFichier, "wb");
+		gestionErreurs(fichier);
+	
+	
+	while(positionEleve->suivant != NULL)
+	{
+		fwrite(positionEleve, sizeof(Eleve_t), ecole.nbClasse, fichier);
+		positionEleve = positionEleve->suivant;
+		
+	}
+	fclose(fichier);
+}
+
+
+void RecupSaveBinaireBaseEleve(char *nomFichier, Ecole_t * ecole)
+{
+	FILE * fichier;
+	Classe_t* positionClasse = ecole->premiereClasse;
+	Eleve_t* positionEleve = premiereClasse->classe;
+	
+	fichier = fopen(nomFichier, "rb");
+		gestionErreurs(fichier);
+	
+	// Tant qu'on ne rencontre pas la fin du fichier
+	while(!feof(fichier))
+	{	// Lecture et ecriture dans la structure eleve
+		fread(positionEleve, sizeof(Eleve_t), ecole->nbClasse, fichier);
+		
+		positionEleve->suivant = malloc(sizeof(Eleve_t));
+		positionEleve = positionEleve->suivant;
+	}
+	fclose(fichier);
+}
+
+/*
 void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
@@ -41,11 +83,12 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 	
 		fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
 		gestionErreurs(fichier);
-	
-	while(positionClasse->suivant != NULL)
+	if(positionClasse != NULL)
 	{
-	positionEleve = positionClasse->classe;
-		
+		while(positionClasse->suivant != NULL)
+		{
+		positionEleve = positionClasse->classe;
+			
 		while(positionEleve->suivant != NULL)
 		{
 			fprintf(fichier, " %s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
@@ -62,12 +105,12 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 		}
 	positionClasse = positionClasse->suivant;
 	}
-
+	}
 	fclose(fichier);	// Fermeture du fichier écrit
 
 }
-
-
+*/
+/**
 void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
@@ -100,3 +143,4 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 	}
 	fclose(fichier);
 }
+*/

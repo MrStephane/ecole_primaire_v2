@@ -35,15 +35,6 @@ int comptedonnees(FILE * fichier);
  */
 void gestionErreurs(FILE * fichier);
 
-/* Fonction :
- * ----------
- * Entrée :
- * Sortie :
- *  Usage :
- * ----------
- * *Description*
- */
-void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
 
 /* Fonction :
  * ----------
@@ -53,6 +44,38 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
  * ----------
  * *Description*
  */
-void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole);
+void SaveBinaireBaseEleve(char *nomFichier, Ecole_t ecole);
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+void RecupSaveBinaireBaseEleve(char *nomFichier, Ecole_t * ecole);
+
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+///void ecrireBaseEleve(char *nomFichier, Ecole_t ecole);
+
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+///void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole);
 
 #endif // FICHIER_H
