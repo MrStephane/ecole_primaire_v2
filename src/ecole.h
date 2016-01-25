@@ -37,6 +37,17 @@ typedef struct Ecole
 void AjouterEleveDansEcole(Ecole_t *ptr_ecole);
 
 
+/* Fonction :
+ * ----------
+ * Entrée :
+ * Sortie :
+ *  Usage :
+ * ----------
+ * *Description*
+ */
+Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole);
+
+
 
 /* Fonction :
  * ----------
