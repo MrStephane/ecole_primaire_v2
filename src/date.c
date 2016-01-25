@@ -10,11 +10,11 @@
 
 
 
-void RecupererDate(struct tm *ptr_d)
+void RecupererDate(struct tm *ptr_dateJour)
 {
     time_t sec;
     time(&sec);
-    ptr_d=localtime(&sec);
+    ptr_dateJour=localtime(&sec);
 
 }
 
@@ -22,18 +22,18 @@ void RecupererDate(struct tm *ptr_d)
 
 void AfficherDate(struct tm date)
 {
-    printf("%d/%d/%d", date.tm_mday, date.tm_mon, date.tm_year);
+    printf("%d/%d/%d", date.tm_mday, date.tm_mon+1, date.tm_year+1900);
 }
 
 
 
-void SaisirDate(struct tm *ptr_d)
+void SaisirDate(struct tm *ptr_date)
 {
 	printf("(jj.mm.aaaa) : ");
-	scanf("%d.%d.%d", &ptr_d->tm_mday, &ptr_d->tm_mon, &ptr_d->tm_year);
+	scanf("%d.%d.%d", &ptr_date->tm_mday, &ptr_date->tm_mon, &ptr_date->tm_year);
 	ViderBuffer();
-	ptr_d->tm_mday = ptr_d->tm_mday-1;
-	ptr_d->tm_year = ptr_d->tm_year-1900;
+	ptr_date->tm_mday = ptr_date->tm_mday-1;
+	ptr_date->tm_year = ptr_date->tm_year-1900;
 }
 
 
@@ -107,17 +107,17 @@ int ControleDate(struct tm d)
 
 
 
-void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire)
+void CalculRentreeScolaire(struct tm today, struct tm *ptr_rentreeScolaire)
 {
-	rentreeScolaire->tm_mday = 1;
-	rentreeScolaire->tm_mon = 9;
+	ptr_rentreeScolaire->tm_mday = 1;
+	ptr_rentreeScolaire->tm_mon = 8; // Septembre = 9 mais -1 a cause du format d'une struct tm
 
 	// Si le mois est inférieur à septembre alors la rentré scolaire c'est déroulé l'année précédente.
-	if (today.tm_mon < 9)
-		rentreeScolaire->tm_year = today.tm_year - 1;
+	if (today.tm_mon < 8)
+		ptr_rentreeScolaire->tm_year = today.tm_year - 1;
 	// Sinon la rentré c'est déroulé la même année.
 	else
-		rentreeScolaire->tm_year = today.tm_year;
+		ptr_rentreeScolaire->tm_year = today.tm_year;
 }
 
 
@@ -136,7 +136,7 @@ int CalculerAge(struct tm dateJ, struct tm dateN)
 int CategorieAge(struct tm dateN, struct tm dateR)
 {
     // Si le mois de naissance est inférieur à Septembre il faut soutraire un an à l'année de naissance pour obtenir la bonne catégorie d'age
-	if (dateN.tm_mon < 9)
+	if (dateN.tm_mon < 8)
         return (dateR.tm_year - (dateN.tm_year - 1));
 
 	// Sinon il suffit de soutraire année de la rentrée avec l'année de naissance tel quel

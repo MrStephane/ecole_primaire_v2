@@ -11,13 +11,13 @@
 
 /* Fonction : RecupererDate
  * ------------------------
- * Entrée : ptr_d - Pointeur sur la structure date à récupérer.
+ * Entrée : ptr_dateJour - Pointeur sur la structure date à récupérer.
  * Sortie : Aucune.
  *  Usage : RecupererDate(ptr_dateDuJour);
  * ------------------------
  * Récupère la date du jour.
  */
-void RecupererDate(struct tm *ptr_d);
+void RecupererDate(struct tm *ptr_dateJour);
 
 
 
@@ -47,14 +47,14 @@ void SaisirDate(struct tm *ptr_d);
 
 /* Fonction : CalculRentreeScolaire
  * --------------------------------
- * Entrée : 		  today - Date du jour.
- *			rentreeScolaire - Pointeur sur la date de rentrée scolaire.
+ * Entrée : 		  	  today - Date du jour.
+ *			ptr_rentreeScolaire - Pointeur sur la date de rentrée scolaire.
  * Sortie : Aucune.
  *  Usage : CalculRentreeScolaire(dateDuJour, ptr_dateDeRentreeScolaire);
  * --------------------------------
  * Définie la date de rentré scolaire en fonction de la date du jour.
  */
-void CalculRentreeScolaire(struct tm today, struct tm *rentreeScolaire);
+void CalculRentreeScolaire(struct tm today, struct tm *ptr_rentreeScolaire);
 
 
 
