@@ -62,17 +62,23 @@ classe.h :
 	- void AfficherClasse(Classe_t *ptr_classe);
 	  Affiche les élèves de la classe.
 	  
+	- Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom);
+	  Recherche un élève dans  la classe et retourne un pointeur sur celui-ci si il existe.
+	  
 	- void AjouterEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 	  Ajoute un élève dans la classe, si posible.
+	
+	- void RetirerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
+	  Retire un eleve de la classe sans le supprimer.
 	  
 	- void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve);
 	  Supprime un élève de la classe, si il existe.
-	  
-	- Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom);
-	  Recherche un élève dans  la classe et retourne un pointeur sur celui-ci si il existe.
 	
 	- Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve);
 	  Permet de recupérer un pointeur sur la classe de l'élève.
+	
+	- Classe_t* RechercherNiveauClasse(Classe_t *ptr_classeCourante, Eleve_t *ptr_eleve);
+	  Recherche une classe du niveau correspondant à l'élève.
 	
 	- void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 	  Reparti de manière équitable les élèves dans les deux classes de même niveau.
@@ -89,14 +95,17 @@ personnel.h :
 	  Supprime le personnel choisi.
 	  
 ecole.h :
-	- void AjouterEleveDansEcole(Ecole_t *ptr_ecole);
+	- void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom);
 	  Ajoute un élève dans l'école si c'est possible.
 	  
-	- void SupprimerEleveDansEcole(Ecole_t *ptr_ecole);
+	- void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom);
 	  Supprime un élève de l'école si il existe.
 	  
-	- Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole);
+	- Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom);
 	  Recherche un élève dans l'école et retourne un pointeur sur celui-ci si il existe.
+	
+	- void ModificationEleve(Ecole_t *ptr_ecole, char *nom, char* prenom);
+	  Modifie les informations d'un élève et propose de le replacer.
 
 
 fichier.h :
