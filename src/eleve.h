@@ -5,13 +5,12 @@
 #include <string.h>
 #include <time.h>
 
-#include “date.h”
-
+#include "date.h"
 
 #ifndef ELEVE_H
 #define ELEVE_H
 
-#define TAILLECHAINE 50
+//#define TAILLECHAINE 50
 
 
 
@@ -48,7 +47,7 @@ typedef struct Eleve
  * ----------
  * *Description*
  */
- Eleve_t* CreationEleve(void)
+ Eleve_t* CreationEleve(void);
 
 
 /* Fonction :
@@ -92,7 +91,7 @@ void SupprimerEleve(Classe_t* tete);
  * ----------
  * *Description*
  */
-void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom)
+void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbEleveListe, char* nom, char* prenom);
 
 
 /* Fonction :
@@ -103,7 +102,7 @@ void AjouterEleve(Classe_t* ecole, int* nbClasses, Eleve* listeAttente, int* nbE
  * ----------
  * *Description*
  */
-Eleve* RechercherEleve(char* nom, char* prenom, Classe_t* c)
+Eleve* RechercherEleve(char* nom, char* prenom, Classe_t* c);
 
 
 /* Fonction :
@@ -114,7 +113,7 @@ Eleve* RechercherEleve(char* nom, char* prenom, Classe_t* c)
  * ----------
  * *Description*
  */
-void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
+void MiseAJourEleve(Classe_t* ecole, int* nbClasses);
 
 
 /* Fonction :
@@ -125,7 +124,7 @@ void MiseAJourEleve(Classe_t* ecole, int* nbClasses)
  * ----------
  * *Description*
  */
-void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie)
+void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie);
 
 
 /* Fonction :
@@ -136,7 +135,7 @@ void CopieEleve(Eleve* eleveCopie, Eleve eleveACopie)
  * ----------
  * *Description*
  */
-Eleve_t* DernierEleve(Eleve_t *courant)
+Eleve_t* DernierEleve(Eleve_t *courant);
 
 
 

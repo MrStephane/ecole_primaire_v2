@@ -9,7 +9,7 @@
 
 void AfficherClasse(Classe_t classe)
 {
-	Eleve_t *ptr_eleveCourant = classe->classe;
+	Eleve_t *ptr_eleveCourant = classe.classe;
 	
 	
 	// Si il n'y a pas d'élève dans la classe on sort de la fonction
