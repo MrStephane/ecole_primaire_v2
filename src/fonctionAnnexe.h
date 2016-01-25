@@ -73,7 +73,7 @@ int ControleChaine(char* ch);
  * -------------------------------
  * Fait une saisie tant que la chaine ne valide pas le contrôle.
  */
-void SaisieChaineControle(char *ptr_chaine, char *message);
+void SaisieChaineControle(char *message, char *ptr_chaine);
 
 
 #endif

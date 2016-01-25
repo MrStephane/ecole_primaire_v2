@@ -74,7 +74,7 @@ int ControleChaine(char* ch)
 
 
 
-void SaisieChaineControle(char *ptr_chaine, char *message)
+void SaisieChaineControle(char *message, char *ptr_chaine)
 {
 	int continuer = 0;
 	
@@ -85,7 +85,7 @@ void SaisieChaineControle(char *ptr_chaine, char *message)
 		ViderBuffer();
 		
 		if (ControleChaine(ptr_chaine) == 0)
-			printf("Ecrivez le nom sans chiffres ni accents.\n");
+			printf("Ecrivez la chaine sans chiffres ni accents.\n");
 		else
 			continuer = 1;
 	} while (!continuer);
