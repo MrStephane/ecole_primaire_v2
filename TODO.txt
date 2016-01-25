@@ -13,8 +13,8 @@ Très Important :
 	- Ajouter la fonction SupprimerEleve. (Redha) **FAIT**
 	
 	classe.c :
-	- Ajouter la fonction AjouterEleveDansClasse.
-	- Ajouter la fonction RechercherEleveDansClasse.
+	- Ajouter la fonction AjouterEleveDansClasse. 
+	- Ajouter la fonction RechercherEleveDansClasse. **FAIT**
 	
 	ecole.c :
 	- Ecrire la fonction AjouterEleveDansEcole.
