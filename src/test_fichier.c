@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "ecole.h"
+#include <string.h>
+#include <ctype.h>
+#include <string.h>
+#include <time.h>
 #include "fichier.h"
+#include "ecole.h"
+#include "personnel.h"
+#include "classe.h"
+#include "eleve.h"
+#include "date.h"
+#include "prof.h"
+#include "fonctionAnnexe.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +19,7 @@ int main(int argc, char *argv[])
 	
 	Ecole_t ecole;
 	
-/*	
+/*
 	RetourLigne(2);
 	printf("\t fonction ecrireBaseEleve DEBUT");
 	RetourLigne(2);		

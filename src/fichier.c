@@ -33,7 +33,7 @@ void gestionErreurs(FILE * fichier)
 }
 
 
-void SaveBinaireBaseEleve(char *nomFichier, Ecole_t ecole)
+void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
 	Classe_t* positionClasse = ecole.premiereClasse;
@@ -43,20 +43,24 @@ void SaveBinaireBaseEleve(char *nomFichier, Ecole_t ecole)
 		gestionErreurs(fichier);
 	
 	
-	while(positionEleve->suivant != NULL)
+	while(positionClasse->suivant != NULL)
 	{
-		fwrite(positionEleve, sizeof(Eleve_t), ecole.nbClasse, fichier);
-		positionEleve = positionEleve->suivant;
-		
+		while(positionEleve->suivant != NULL)
+		{
+			fwrite(positionEleve, sizeof(Eleve_t), ecole.nbClasse, fichier);
+			positionEleve = positionEleve->suivant;
+		}
+		positionClasse = positionClasse->suivant;
 	}
 	fclose(fichier);
 }
 
 
-void RecupSaveBinaireBaseEleve(char *nomFichier, Ecole_t * ecole)
+void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole)
 {
 	FILE * fichier;
-	Classe_t* positionClasse = ecole->premiereClasse;
+	
+	Classe_t* positionClasse = ptr_ecole->premiereClasse;
 	Eleve_t* positionEleve = premiereClasse->classe;
 	
 	fichier = fopen(nomFichier, "rb");
@@ -65,15 +69,15 @@ void RecupSaveBinaireBaseEleve(char *nomFichier, Ecole_t * ecole)
 	// Tant qu'on ne rencontre pas la fin du fichier
 	while(!feof(fichier))
 	{	// Lecture et ecriture dans la structure eleve
-		fread(positionEleve, sizeof(Eleve_t), ecole->nbClasse, fichier);
+		fread(positionEleve, sizeof(Eleve_t), ptr_ecole->nbClasse, fichier);
 		
 		positionEleve->suivant = malloc(sizeof(Eleve_t));
 		positionEleve = positionEleve->suivant;
 	}
-	fclose(fichier);
+	fclose(fichier);)
 }
-
 /*
+
 void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
@@ -81,8 +85,9 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 	Classe_t *positionClasse = ecole.depart;
 	Eleve_t *positionEleve = positionClasse->classe;
 	
-		fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
-		gestionErreurs(fichier);
+	fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
+	gestionErreurs(fichier);
+	
 	if(positionClasse != NULL)
 	{
 		while(positionClasse->suivant != NULL)
@@ -96,21 +101,21 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 				positionEleve->age,
 				positionEleve->dateDeNaissance.tm_mday,
 				positionEleve->dateDeNaissance.tm_mon,
-				positionEleve->dateDeNaissance.tm_myear,
+				positionEleve->dateDeNaissance.tm_year,
 				positionEleve->genre,
 				positionEleve->nomClasse,
 				positionEleve->adresse);		// Ecriture dans le fichier
 				
 			positionEleve = positionEleve->suivant;
 		}
-	positionClasse = positionClasse->suivant;
-	}
+		positionClasse = positionClasse->suivant;
+		}
 	}
 	fclose(fichier);	// Fermeture du fichier écrit
 
 }
-*/
-/**
+
+
 void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
@@ -132,7 +137,7 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 				&positionEleve->age,
 				&positionEleve->dateDeNaissance.tm_mday,
 				&positionEleve->dateDeNaissance.tm_mon,
-				&positionEleve->dateDeNaissance.tm_myear,
+				&positionEleve->dateDeNaissance.tm_year,
 				&positionEleve->genre,
 				positionEleve->nomClasse,
 				positionEleve->adresse);
@@ -143,4 +148,5 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 	}
 	fclose(fichier);
 }
+
 */
