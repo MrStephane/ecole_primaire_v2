@@ -2,7 +2,7 @@
 Compilo=gcc
 
 # Cible principale
-ProjetEcolePrimaire.exe : fonctionAnnexe.o date.o eleve.o prof.o classe.o personnel.o fichier.o
+ProjetEcolePrimaire.exe : fonctionAnnexe.o date.o eleve.o prof.o classe.o personnel.o fichier.o main.o
 	$(Compilo) -o $@ *.o
 
 
@@ -37,6 +37,9 @@ personnel.o : personnel.c personnel.h
     
 fichier.o : fichier.c fichier.h
 	$(Compilo) -c fichier.c
+
+main.o: main.c fichier.h fonctionAnnexe.o date.o eleve.o prof.o classe.o ecole.o fichier.o personnel.o
+	$(Compilo) -c $@
 
 
 	
