@@ -9,7 +9,7 @@
 
 void AfficherClasse(Classe_t classe)
 {
-	Eleve_t *ptr_eleveCourant = classe.classe;
+	Eleve_t *ptr_eleveCourant = classe.premierEleve;
 	
 	
 	// Si il n'y a pas d'élève dans la classe on sort de la fonction
@@ -31,7 +31,7 @@ void AfficherClasse(Classe_t classe)
 
 Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom)
 {
-	Eleve* eleveCourant = ptr_classe->classe;
+	Eleve* eleveCourant = ptr_classe->premierEleve;
 
 	
 	
@@ -104,7 +104,7 @@ void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve)
 	
 	// Si l'élève est le premier de la classe alors le champ classe de ptr_classe pointer sur le deuxième élève
 	if (ptr_eleve->precedent == NULL)
-		ptr_classe->classe = ptr_eleve->suivant;
+		ptr_classe->premierEleve = ptr_eleve->suivant;
 	
 	// Si il est le dernier alors l'avant dernier eleve doit avoir son champ suivant sur NULL
 	else if (ptr_eleve->suivant == NULL)
@@ -192,7 +192,7 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 			ptr_eleve = ElevePosition(ptr_classe->classe, ptr_classe->nbEleve - somme);
 			
 			// On recupère le dernier élève de la classe suivante
-			ptr_dernierEleve = DernierEleve(ptr_classe->suivant->classe);
+			ptr_dernierEleve = DernierEleve(ptr_classe->suivant->premierEleve);
 			
 			// Puis on transfère les élève dans l'autre classe.
 			ptr_dernierEleve->suivant = ptr_eleve;
@@ -206,10 +206,10 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 		else
 		{
 			// Tant qu'on a pas atteint le premier eleve de la liste d'élève à tranférer on passe au suivant
-			ptr_eleve = ElevePosition(ptr_classe->suivant->classe, ptr_classe->suivant->nbEleve - somme);
+			ptr_eleve = ElevePosition(ptr_classe->suivant->premierEleve, ptr_classe->suivant->nbEleve - somme);
 			
 			// On recupère le dernier élève de la classe
-			ptr_dernierEleve = DernierEleve(ptr_classe->classe);
+			ptr_dernierEleve = DernierEleve(ptr_classe->premierEleve);
 			
 			// Puis on transfère les élève dans l'autre classe.
 			ptr_dernierEleve->suivant = ptr_eleve;
@@ -229,10 +229,10 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 		nbEleveATranferer /= 2;
 		
 		// Tant qu'on a pas atteint le premier eleve de la liste d'élève à tranférer on passe au suivant
-		ptr_eleve = ElevePosition(ptr_classe->suivant->classe, ptr_classe->suivant->nbEleve - somme);
+		ptr_eleve = ElevePosition(ptr_classe->suivant->premierEleve, ptr_classe->suivant->nbEleve - somme);
 		
 		// On recupère le dernier élève de la classe
-		ptr_dernierEleve = DernierEleve(ptr_classe->classe);
+		ptr_dernierEleve = DernierEleve(ptr_classe->premierEleve);
 		
 		// Puis on transfère les élève dans l'autre classe.
 		ptr_dernierEleve->suivant = ptr_eleve;
