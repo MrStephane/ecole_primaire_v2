@@ -39,7 +39,7 @@ fichier.o : fichier.c fichier.h
 	$(Compilo) -c fichier.c
 
 main.o: main.c fichier.h fonctionAnnexe.o date.o eleve.o prof.o classe.o ecole.o fichier.o personnel.o
-	$(Compilo) -c $@
+	$(Compilo) -c $<
 
 
 	

@@ -7,6 +7,9 @@
 #include "eleve.h"
 
 
+extern struct tm dateJ;
+extern struct tm rentreeScolaire;
+
 
 Eleve_t* CreationEleve(void)
 {
@@ -79,7 +82,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
 
 
-void AfficherEleve(Eleve_t eleve, char* nom, char* prenom)
+void AfficherEleve(Eleve_t eleve)
 {
     printf("%s %s\n", eleve.nom, eleve.prenom);
     printf("Ne le ");
@@ -89,7 +92,7 @@ void AfficherEleve(Eleve_t eleve, char* nom, char* prenom)
 
 
 
-void SupprimerEleve(Eleve_t *ptr_eleve);
+void SupprimerEleve(Eleve_t *ptr_eleve)
 {
    free(ptr_eleve);
 }

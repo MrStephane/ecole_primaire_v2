@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	
 	
 	// On récupère la date du jour
-	RecupererDate(&ptr_dateJour);
+	RecupererDate(&dateJ);
 	// On calcule la date de rentré scolaire
 	CalculRentreeScolaire(dateJ, &rentreeScolaire);
 	
@@ -60,11 +60,11 @@ int main(int argc, char* argv[])
 		printf("2 - Afficher un eleve.\n");
 		printf("3 - Modifier un eleve.\n");
 		printf("4 - Rechercher un eleve dans une classe.\n");
-		printf("5 - Rechercher un eleve dans l'ecole.")
+		printf("5 - Rechercher un eleve dans l'ecole.");
 		printf("6 - Supprimer un eleve.\n");
 		printf("7 - Afficher une classe\n");
 		printf("8 - Afficher l'ecole.\n");
-		printf("9 - Quitter.\n")
+		printf("9 - Quitter.\n");
 		RetourLigne(1);
 		printf("Votre choix : ");
 		scanf("%d", &choix);
@@ -134,14 +134,14 @@ int main(int argc, char* argv[])
 						
 						switch (choixC)
 						{
-							case O:
-							case o:
+							case 'O':
+							case 'o':
 								AfficherEleve(*ptr_eleve);
 							// Ajouter une gestion d'erreur
 						}
 					}
 					else
-						printf("L'eleve n'est pas present dans cette classe.\n")
+						printf("L'eleve n'est pas present dans cette classe.\n");
 				}
 				break;
 				
@@ -160,8 +160,8 @@ int main(int argc, char* argv[])
 					
 					switch (choixC)
 					{
-						case O:
-						case o:
+						case 'O':
+						case 'o':
 							AfficherEleve(*ptr_eleve);
 						// Ajouter la gestion d'erreur
 					}
@@ -171,12 +171,12 @@ int main(int argc, char* argv[])
 					printf("Cet eleve n'est pas dans l'ecole.\n");
 					printf("Voulez-vous l'ajouter ? (O/n) ");
 					scanf("%c", &choixC);
-					ViderBuffer()
+					ViderBuffer();
 					
 					switch (choixC)
 					{
-						case O:
-						case o:
+						case 'O':
+						case 'o':
 							AjouterEleveDansEcole(&ecole, nom, prenom);
 						// Ajouter la gestion d'erreur
 					}

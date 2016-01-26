@@ -12,7 +12,7 @@
 #define ELEVE_H
 
 
-
+#define TAILLECHAINE 40
 
 /**************
  * Structures *
@@ -85,7 +85,7 @@ void AfficherEleve(Eleve_t eleve);
  * -------------------------
  * Supprime un élève de la mémoire.
  */
-void SupprimerEleve(Classe_t* ptr_eleve);
+void SupprimerEleve(Eleve_t* ptr_eleve);
 
 
 

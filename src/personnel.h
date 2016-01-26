@@ -10,6 +10,9 @@
 #define PERSONNEL_H
 
 
+#define TAILLECHAINE 40
+
+
 /**************
  * Structures *
  **************/

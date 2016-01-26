@@ -82,7 +82,7 @@ void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 	FILE * fichier;
 
 	Classe_t *positionClasse = ecole.premiereClasse;
-	Eleve_t *positionEleve = positionClasse->classe;
+	Eleve_t *positionEleve = positionClasse->premierEleve;
 	
 	fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
 	gestionErreurs(fichier);

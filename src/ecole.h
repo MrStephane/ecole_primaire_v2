@@ -73,7 +73,7 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom);
  * -----------------------------------
  * Recherche un élève dans l'école.
  */
-Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom);
+Eleve_t* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom);
 
 
 
@@ -100,7 +100,7 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom);
  * ----------------------------
  * Modifie les informations d'un élève et propose de le replacer.
  */
-void ModificationEleve(Ecole_t *ptr_ecole, Eleve_t *ptr_eleve)
+void ModificationEleve(Ecole_t *ptr_ecole, Eleve_t *ptr_eleve);
 
 
 

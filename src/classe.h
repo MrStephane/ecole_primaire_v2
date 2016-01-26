@@ -24,9 +24,9 @@
 typedef struct Classe
 {
 	char nomClasse[5];
-	Prof* professeur;
+	Prof_t* professeur;
 	int nbEleve;
-	Eleve* premierEleve;
+	Eleve_t* premierEleve;
 	struct Classe *suivant;
 }Classe_t;
 

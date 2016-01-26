@@ -1,17 +1,17 @@
 #include <stdio.h>
-#include <stlib.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
 
-#include "classe.h"
+#include "ecole.h"
 
 
 
 
 void InitEcole(Ecole_t *ptr_ecole)
 {
-	memset(ptr_ecole, 0, sizeof(Ecole_t);
+	memset(ptr_ecole, 0, sizeof(Ecole_t));
 }
 
 
@@ -47,7 +47,7 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	ptr_eleve = CreationEleve();
 	
 	// Appel a SaisirEleve avec le nom et prenom precedement saisie pour remplir les autre champs (age, etc...)
-	SaisirEleve(ptr_classe, nom, prenom);
+	SaisirEleve(ptr_eleve, nom, prenom);
 	
 	// Recherche de la classe qui correspond au niveau de l'élève
 	ptr_classe = RechercherNiveauClasse(ptr_ecole->premiereClasse, ptr_eleve);
@@ -63,17 +63,20 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 
 
 
-Eleve* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom)
+Eleve_t* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom)
 {
 	Classe_t* ptr_classeCourante = ptr_ecole->premiereClasse;
+	
+	Eleve_t *ptr_eleve;
 	
 	
 	// Tant qu'on a pas parcouru toute les classes
 	while (ptr_classeCourante->suivant != NULL)
 	{
+		ptr_eleve = RechercherEleveDansClasse(ptr_classeCourante, nom, prenom);
 		// Si l'élève est dans cette classe alors on retourne le pointeur de la classe
-		if (RechercherEleveDansClasse(ptr_classeCourante, ptr_eleve->nom, ptr_eleve->prenom) != NULL)
-			return ptr_classeCourante;
+		if (ptr_eleve != NULL)
+			return ptr_eleve;
 		
 		ptr_classeCourante = ptr_classeCourante->suivant;
 	}
