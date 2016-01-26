@@ -244,3 +244,21 @@ void RepartitionEleveDansClasse(Classe_t *ptr_classe)
 		ptr_classe->suivant->nbEleve -= somme;
 	}
 }
+
+
+
+void AfficherListeClasse(Classe_t *ptr_classeCourante)
+{
+	int i = 1;
+	
+	
+	if (ptr_classeCourante == NULL)
+		return;
+	
+	while(ptr_classeCourante != NULL)
+	{
+		printf("%d - %s\n", i, ptr_classeCourante->nomClasse);
+		ptr_classeCourante = ptr_classeCourante->suivant;
+		++i;
+	}
+}

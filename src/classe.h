@@ -140,4 +140,16 @@ Classe_t* RechercherNiveauClasse(Classe_t *ptr_classeCourante, Eleve_t *ptr_elev
 void RepartitionEleveDansClasse(Classe_t *ptr_classe);
 
 
+
+/* Fonction : AfficherListeClasse
+ * ------------------------------
+ * Entrée : ptr_premiereClasse - Pointeur sur la première classe de l'école.
+ * Sortie : Aucune.
+ *  Usage : AfficherListeClasse(ptr_premiereClasse);
+ * ------------------------------
+ * Affiche la liste des classes avec un numéro devant.
+ */
+void AfficherListeClasse(Classe_t *ptr_premiereClasse);
+
+
 #endif // CLASSE_H
