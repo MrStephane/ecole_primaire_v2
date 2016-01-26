@@ -9,6 +9,13 @@
 
 
 
+void InitEcole(Ecole_t *ptr_ecole)
+{
+	memset(ptr_ecole, 0, sizeof(Ecole_t);
+}
+
+
+
 void AfficherEcole(Ecole_t ecole)
 {
 	Classe_t *ptr_classeCourante = ecole.premiereClasse;
@@ -101,23 +108,15 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 
 
 
-void ModificationEleve(Ecole_t *ptr_ecole, char *nom, char* prenom)
+void ModificationEleve(Ecole_t *ptr_ecole, Eleve_t *ptr_eleve)
 {
 	Classe_t *ptr_classe, *ptr_ancienneClasse;
-	
-	Eleve_t *ptr_eleve;
 	
 	char choix;
 	
 	int continuer = 0;
 	
 	
-	
-	ptr_eleve = RechercherEleveDansEcole(ptr_ecole, nom, prenom);
-	
-	// Si l'élève n'existe pas.
-	if (ptr_eleve == NULL)
-		Printf("Cet eleve n'existe pas.\n");
 	
 	// On recupère sa classe pour plus tard
 	ptr_ancienneClasse = RechercherClasseEleve(ptr_ecole->premiereClasse, ptr_eleve);
