@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <time.h>
 
+#include "fonctionAnnexe.h"
+
 
 #ifndef DATE_H
 #define DATE_H
@@ -41,6 +43,18 @@ void AfficherDate(struct tm date);
  * Saisie une date au format jj.mm.aaaa
  */
 void SaisirDate(struct tm *ptr_d);
+
+
+
+/* Fonction : ControleDate
+ * -----------------------
+ * Entrée : d - Date à controler.
+ * Sortie : Un entier qui vaut 1 si la date est valide, O sinon.
+ *  Usage : estValide = ControleDate(date);
+ * -----------------------
+ * Controle si une date est valide.
+ */
+int ControleDate(struct tm d);
 
 
 

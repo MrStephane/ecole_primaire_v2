@@ -26,10 +26,7 @@ void AfficherProf(Prof_t p)
 
 void SaisirProf(Prof_t *ptr_p)
 {
-    int continuer = 0;
-
-
-	SaisieChaineControle("Saisir la civilite du professeur ( Monsieur, Madame, Mademoiselle ) : ", ptr_p->civilite);
+    	SaisieChaineControle("Saisir la civilite du professeur ( Monsieur, Madame, Mademoiselle ) : ", ptr_p->civilite);
 	SaisieChaineControle("Entrez le nom du professeur : ", ptr_p->nom);
 	SaisieChaineControle("Entrez le prenom du professeur : ", ptr_p->prenom);
 
