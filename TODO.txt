@@ -21,6 +21,7 @@ Très Important :
 	- Ajouter la fonction RechercherEleveDansEcole. (Redha) **FAIT**
 	- (FAIT) Ecrire la fonction SupprimerEleveDansEcole. (Stephane)
 	- (FAIT) Faire une fonction de modification d'un élève. (Stéphane)
+	- Faire une fonction AfficherEcole.
 
 	personnel.c
 	- (FAIT) ajouter la fonction CreerPersonnel (clément)
