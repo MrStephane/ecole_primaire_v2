@@ -26,6 +26,18 @@ typedef struct Ecole
  *************/
 
 
+ /* Fonction : AfficherEcole
+ * -------------------------
+ * Entrée : ecole - Ecole que l'on veut afficher.
+ * Sortie : Aucune.
+ *  Usage : AfficherEcole(ecole);
+ * -------------------------
+ * Affiche la totalité d'une école.
+ */
+void AfficherEcole(Ecole_t ecole);
+ 
+ 
+ 
 /* Fonction : AjouterEleveDansEcole
  * --------------------------------
  * Entrée : ptr_ecole - Pointeur sur l'école dans laquelle on veut ajouter l'élève.

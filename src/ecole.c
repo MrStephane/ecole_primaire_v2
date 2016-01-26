@@ -9,6 +9,25 @@
 
 
 
+void AfficherEcole(Ecole_t ecole)
+{
+	Classe_t *ptr_classeCourante = ecole.premiereClasse;
+	
+	
+	
+	printf("Ecole : %s\n", ecole.nomEcole);
+	
+	RetourLigne(2);
+	
+	while (ptr_classeCourante != NULL)
+	{
+		AfficherClasse(*ptr_classeCourante);
+		ptr_classeCourante = ptr_classeCourante->suivant;
+	}
+}
+
+
+
 void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 {
 	Classe_t *ptr_classe;
