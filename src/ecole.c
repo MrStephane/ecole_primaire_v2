@@ -71,7 +71,7 @@ Eleve_t* RechercherEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char* prenom)
 	
 	
 	// Tant qu'on a pas parcouru toute les classes
-	while (ptr_classeCourante->suivant != NULL)
+	while (ptr_classeCourante != NULL)
 	{
 		ptr_eleve = RechercherEleveDansClasse(ptr_classeCourante, nom, prenom);
 		// Si l'élève est dans cette classe alors on retourne le pointeur de la classe

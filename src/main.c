@@ -36,13 +36,13 @@ int main(int argc, char* argv[])
 	InitEcole(&ecole);
 	
 	// Si l'utilisateur n'a pas passé le bon nombre d'arguments alors on sort du programme
-	if (argc < 1)
+	if (argc > 2)
 		exit(EXIT_FAILURE);
 	// Si l'utilisateur a passé un argument, alors il s'agit du nom de l'école
-	else if (argc == 1)
+	else if (argc == 2)
 		strcpy(ecole.nomEcole, argv[1]);
 	// Si il n'y a aucun argument alors on demande le nom de l'école
-	else if (argc == 0)
+	else if (argc == 1)
 		SaisieChaineControle("Nom de l'ecole : ", ecole.nomEcole);
 	
 	// On formate le nom du fichier d'enregistrement et de lecture
@@ -86,6 +86,8 @@ int main(int argc, char* argv[])
 				
 				if (ptr_eleve != NULL)
 					AfficherEleve(*ptr_eleve);
+				else
+					printf("Cet eleve n'existe pas.\n");
 				break;
 				
 			case 3:
