@@ -34,6 +34,9 @@ classe.o : classe.c classe.h prof.o eleve.o date.o fonctionAnnexe.o
     
 personnel.o : personnel.c personnel.h
 	$(Compilo) -c personnel.c
+
+ecole.o: ecole.c classe.h personnel.h fonctionAnnexe.o date.o eleve.o prof.o classe.o personnel.o
+	$(Compilo) -c $<
     
 fichier.o : fichier.c fichier.h
 	$(Compilo) -c fichier.c
