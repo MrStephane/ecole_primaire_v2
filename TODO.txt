@@ -26,6 +26,12 @@ Très Important :
 	personnel.c
 	- (FAIT) ajouter la fonction CreerPersonnel (clément)
 	
+	main.c :
+	- Finir d'écrire le fichier. (Stephane)
+	
+	Makefile :
+	- Ajouter les regles pour compiler le main. (Stephane)
+	
 
 	
 Important :
