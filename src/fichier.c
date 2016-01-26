@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <string.h>
 #include <time.h>
 
 #include "fichier.h"
-
-
 
 int comptedonnees(FILE * fichier)
 {
@@ -24,7 +23,6 @@ int comptedonnees(FILE * fichier)
 }
 
 
-
 void gestionErreurs(FILE * fichier)
 {
 	if(!fichier)
@@ -34,7 +32,6 @@ void gestionErreurs(FILE * fichier)
 	}
 }
 /*
-
 void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
@@ -80,26 +77,25 @@ void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole)
 }
 */
 
-void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
+void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 {
 	FILE * fichier;
 
-	Classe_t *positionClasse = ecole.depart;
+	Classe_t *positionClasse = ecole.premiereClasse;
 	Eleve_t *positionEleve = positionClasse->classe;
 	
 	fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
 	gestionErreurs(fichier);
-	
-	if(positionClasse != NULL)
-	{
-		while(positionClasse->suivant != NULL)
+		
+		
+		do
 		{
-		positionEleve = positionClasse->classe;
-			
-		while(positionEleve->suivant != NULL)
-		{
-			fprintf(fichier, " %s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
-				positionEleve->nom, positionEleve->prenom,
+		positionEleve = positionClasse->premierEleve;
+			do
+			{
+				fprintf(fichier, "%s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
+				positionEleve->nom,
+				positionEleve->prenom,
 				positionEleve->age,
 				positionEleve->dateDeNaissance.tm_mday,
 				positionEleve->dateDeNaissance.tm_mon,
@@ -107,18 +103,19 @@ void ecrireBaseEleve(char *nomFichier, Ecole_t ecole)
 				positionEleve->genre,
 				positionEleve->nomClasse,
 				positionEleve->adresse);		// Ecriture dans le fichier
-				
-			positionEleve = positionEleve->suivant;
-		}
-		positionClasse = positionClasse->suivant;
-		}
-	}
+					
+				positionEleve = positionEleve->suivant;
+			} while(positionEleve->suivant != NULL);
+			
+			positionClasse = positionClasse->suivant;
+		} while(positionClasse->suivant != NULL);
+			
 	fclose(fichier);	// Fermeture du fichier écrit
 
 }
 
-
-void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
+/*
+void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
 	
@@ -127,6 +124,13 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 	
 	fichier = fopen(nomFichier, "r");	// Ouverture du fichier de sauvegarde en lecture seule
 	gestionErreurs(fichier);
+	
+	
+	while(!feof(fichier))
+	{
+		
+	}
+	
 	
 	while(positionClasse->suivant != NULL)
 	{
@@ -148,7 +152,7 @@ void lireBaseEleve(char *nomFichier, Ecole_t *ptr_ecole)
 		}
 	positionClasse = positionClasse->suivant;
 	}
+
 	fclose(fichier);
 }
-
-*/
+ 	*/

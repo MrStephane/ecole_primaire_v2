@@ -35,7 +35,7 @@ int comptedonnees(FILE * fichier);
  * ----------
  * Description : Stop le programme en cas d'erreur d'ouverture du fichier
  */
-void gestionErreurs(FILE * fichier);
+//void gestionErreurs(FILE * fichier);
 
 
 /* Fonction : SaveBinaireBaseEleve();
@@ -47,7 +47,7 @@ void gestionErreurs(FILE * fichier);
  * Description : Sauvegarde la structure Ecole_t dans un fichier en binaire pour ouvertures suivantes 
  * 				du programme
  */
-void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole);
+///	void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole);
 
 
 /* Fonction : RecupSaveBinaireBaseEleve();
@@ -58,7 +58,7 @@ void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole);
  * ----------
  * Description : Lit le fichier binaire enregistré lors de la dernière fermeture du programme
  */
-void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole);
+///	void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole);
 
 
 /* Fonction : ecrireBaseEleve();
@@ -79,6 +79,6 @@ void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole);
  * ----------
  * Description : Permet de lire le fichier de sauvegarde en clair
  */
-void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole);
+//void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole);
 
 #endif // FICHIER_H
