@@ -28,6 +28,7 @@ typedef struct Classe
 	int nbEleve;
 	Eleve_t* premierEleve;
 	struct Classe *suivant;
+	struct Classe *precedent;
 }Classe_t;
 
 
