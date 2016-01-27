@@ -38,7 +38,11 @@ typedef struct Classe
  *************/
 
 
-/* Fonction : AfficherClasse
+Classe_t CreationClasse(void);
+
+ 
+ 
+ /* Fonction : AfficherClasse
  * -------------------------
  * Entrée : classe - Classe que l'on souhaite afficher.
  * Sortie : Aucune
@@ -47,6 +51,10 @@ typedef struct Classe
  * Affiche les infos de la classe ainsi que la liste d'élève.
  */
 void AfficherClasse(Classe_t classe);
+
+
+
+void SupprimerClasse(Classe_t *ptr_classe);
 
 
 
