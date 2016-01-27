@@ -11,7 +11,7 @@ Classe_t* CreationClasse(void)
 {
 	Classe_t *ptr_classe;
 	
-	ptr_classe = (Classe_t*) calloc (1, sizeof(Classe_t));
+	ptr_classe = (Classe_t*) calloc(1, sizeof(Classe_t));
 	
 	if (ptr_classe == NULL)
 		exit(EXIT_FAILURE);
@@ -30,14 +30,15 @@ void AfficherClasse(Classe_t classe)
 	if (ptr_eleveCourant == NULL)
 		return;
 	
-	while (ptr_eleveCourant->suivant != NULL)
+	while (ptr_eleveCourant != NULL)
 	{
 		AfficherEleve(*ptr_eleveCourant);
-		ptr_eleveCourant = ptr_eleveCourant->suivant;
 		
 		// Tant que l'on est pas sur le dernier élève, on saute des lignes
 		if (ptr_eleveCourant->suivant != NULL)
 			RetourLigne(2);
+		
+		ptr_eleveCourant = ptr_eleveCourant->suivant;
 	}
 }
 
