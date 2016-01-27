@@ -75,12 +75,14 @@ int main(int argc, char* argv[])
 			case 1:
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
+				NormaliserNomPrenom(NULL, nom, prenom);
 				AjouterEleveDansEcole(&ecole, nom, prenom);
 				break;
 				
 			case 2:
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
+				NormaliserNomPrenom(NULL, nom, prenom);
 				
 				ptr_eleve = RechercherEleveDansEcole(&ecole, nom, prenom);
 				
@@ -93,6 +95,7 @@ int main(int argc, char* argv[])
 			case 3:
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
+				NormaliserNomPrenom(NULL, nom, prenom);
 				
 				ptr_eleve = RechercherEleveDansEcole(&ecole, nom, prenom);
 				
@@ -110,6 +113,7 @@ int main(int argc, char* argv[])
 				{
 					SaisieChaineControle("Nom : ", nom);
 					SaisieChaineControle("Prenom : ", prenom);
+					NormaliserNomPrenom(NULL, nom, prenom);
 					
 					printf("Dans quelle classe recherchez-vous l'eleve :\n");
 					RetourLigne(1);
@@ -150,6 +154,7 @@ int main(int argc, char* argv[])
 			case 5:
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
+				NormaliserNomPrenom(NULL, nom, prenom);
 				
 				ptr_eleve = RechercherEleveDansEcole(&ecole, nom, prenom);
 				
@@ -188,6 +193,7 @@ int main(int argc, char* argv[])
 			case 6:
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
+				NormaliserNomPrenom(NULL, nom, prenom);
 				SupprimerEleveDansEcole(&ecole, nom, prenom);
 				break;
 				
