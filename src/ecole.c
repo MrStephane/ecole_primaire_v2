@@ -72,7 +72,7 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 		strcpy(ptr_classe->nomClasse, ptr_eleve->nomClasse);
 		
 		AjouterClasse(ptr_ecole, ptr_classe);
-		printf("Fichier %s, ligne %d\n", __FILE__, __LINE__);
+		
 		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
 		
 		//SupprimerEleve(ptr_eleve);
@@ -125,7 +125,7 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	
 	ptr_classe = RechercherClasseEleve(ptr_ecole->premiereClasse, ptr_eleve);
 	if (ptr_classe == NULL)
-		printf("Erreur dans la recherche de la classe");
+		printf("Erreur dans la recherche de la classe.\n");
 	else
 		SupprimerEleveDansClasse(ptr_classe, ptr_eleve);
 }
