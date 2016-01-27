@@ -213,7 +213,7 @@ void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
 	if (ptr_classeCourante->precedement == NULL)
 	{
 		ptr_ecole->premiereClasse = ptr_classeAAjouter;
-		ptr_classeCourante->precedement = ptr_classeAAjouter;
+		ptr_classeCourante->precedent = ptr_classeAAjouter;
 		ptr_classeAAjouter->suivant = ptr_classeCourante;
 	}
 	else
@@ -221,7 +221,7 @@ void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
 		ptr_classeAAjouter->suivant = ptr_classeCourante;
 		ptr_classeAAjouter->precedent = ptr_classeCourante->precedent;
 		ptr_classeCourante->precedent->suivant = ptr_classeAAjouter;
-		ptr_classeCourante->precedement = ptr_classeAAjouter;
+		ptr_classeCourante->precedent = ptr_classeAAjouter;
 	}
 	
 	++ptr_ecole->nbClasse;
