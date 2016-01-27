@@ -68,13 +68,30 @@ Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom
 
 
 
-void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
+int AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 {
+	Classe_t *ptr_nouvelleClasse;
 	Eleve_t *eleveCourant;
 
-	if(ptr_classe->nbEleve >= 25)
+	if(ptr_classe->nbEleve >= 1)
 	{
-		//Ouvrir une classe
+		ptr_nouvelleClasse = CreationClasse();
+		strcpy(ptr_nouvelleClasse->nomClasse, ptr_eleve->nomClasse);
+		ptr_nouvelleClasse->premierEleve = ptr_eleve;
+		ptr_nouvelleClasse->nbEleve = 1;
+		
+		if (ptr_classe->suivant != NULL)
+		{
+			ptr_nouvelleClasse->suivant = ptr_classe->suivant;
+			ptr_classe->suivant->precedent = ptr_nouvelleClasse;
+		}
+		else
+		{
+			ptr_classe->suivant = ptr_nouvelleClasse;
+			ptr_nouvelleClasse->precedent = ptr_classe;
+		}
+		
+		return 1;
 	}
 
 	else
@@ -90,6 +107,8 @@ void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 	}
 	
 	++ptr_classe->nbEleve;
+	
+	return 0;
 }
 
 

@@ -82,7 +82,7 @@ Eleve_t* RechercherEleveDansClasse(Classe_t *ptr_classe, char *nom, char *prenom
  * ---------------------------------
  * Ajoute un élève dans la classe quand c'est possible.
  */
-void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve);
+int AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve);
 
 
 

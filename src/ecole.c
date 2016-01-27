@@ -45,7 +45,9 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 {
 	Classe_t *ptr_classe;
 	
-	Eleve_t *ptr_eleve; 
+	Eleve_t *ptr_eleve;
+	
+	int estNouvelleClasse = 0;
 	
 	
 	
@@ -69,7 +71,9 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	
 	
 	if (ptr_classe != NULL)
-		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
+		estNouvelleClasse = AjouterEleveDansClasse(ptr_classe, ptr_eleve);
+		if (estNouvelleClasse == 1)
+			++ptr_ecole->nbClasse;
 	else
 	{
 		// Il faut crer une classe
