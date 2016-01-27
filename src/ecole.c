@@ -28,7 +28,13 @@ void AfficherEcole(Ecole_t ecole)
 	
 	while (ptr_classeCourante != NULL)
 	{
+		printf("Classe de %s\n", ptr_classeCourante->nomClasse);
+		RetourLigne(1);
 		AfficherClasse(*ptr_classeCourante);
+		
+		if (ptr_classeCourante->suivant != NULL)
+			RetourLigne(2);
+		
 		ptr_classeCourante = ptr_classeCourante->suivant;
 	}
 }
@@ -215,6 +221,7 @@ void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
 	while (strcmp(classe[i], ptr_classeAAjouter->nomClasse) != 0)
 		++i;
 	
+	// On ce place au bon endroit
 	while (j < i && ptr_classeCourante->suivant != NULL)
 	{
 		ptr_classeCourante = ptr_classeCourante->suivant;

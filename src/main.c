@@ -70,16 +70,24 @@ int main(int argc, char* argv[])
 		scanf("%d", &choix);
 		ViderBuffer();
 		
+		RetourLigne(3);
+		
 		switch (choix)
 		{
 			case 1:
+				printf("Saisie du nouvel eleve :\n");
+				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
 				NormaliserNomPrenom(NULL, nom, prenom);
+				
 				AjouterEleveDansEcole(&ecole, nom, prenom);
+				RetourLigne(3);
 				break;
 				
 			case 2:
+				printf("Affichage de l'eleve :\n");
+				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
 				NormaliserNomPrenom(NULL, nom, prenom);
@@ -90,9 +98,12 @@ int main(int argc, char* argv[])
 					AfficherEleve(*ptr_eleve);
 				else
 					printf("Cet eleve n'existe pas.\n");
+				RetourLigne(3);
 				break;
 				
 			case 3:
+				printf("Modification d'un eleve :\n");
+				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
 				NormaliserNomPrenom(NULL, nom, prenom);
@@ -101,6 +112,7 @@ int main(int argc, char* argv[])
 				
 				if (ptr_eleve != NULL)
 					ModificationEleve(&ecole, ptr_eleve);
+				RetourLigne(3);
 				break;
 				
 			case 4:
@@ -111,6 +123,8 @@ int main(int argc, char* argv[])
 				}
 				else
 				{
+					printf("Recherche d'un eleve :\n");
+					RetourLigne(1);
 					SaisieChaineControle("Nom : ", nom);
 					SaisieChaineControle("Prenom : ", prenom);
 					NormaliserNomPrenom(NULL, nom, prenom);
@@ -149,9 +163,12 @@ int main(int argc, char* argv[])
 					else
 						printf("L'eleve n'est pas present dans cette classe.\n");
 				}
+				RetourLigne(3);
 				break;
 				
 			case 5:
+				printf("Recherche d'un eleve dans l'ecole :\n");
+				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
 				NormaliserNomPrenom(NULL, nom, prenom);
@@ -188,13 +205,17 @@ int main(int argc, char* argv[])
 						// Ajouter la gestion d'erreur
 					}
 				}
+				RetourLigne(3);
 				break;
 				
 			case 6:
+				printf("Suppression d'un eleve :\n");
+				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
 				SaisieChaineControle("Prenom : ", prenom);
 				NormaliserNomPrenom(NULL, nom, prenom);
 				SupprimerEleveDansEcole(&ecole, nom, prenom);
+				RetourLigne(3);
 				break;
 				
 			case 7:
@@ -213,15 +234,18 @@ int main(int argc, char* argv[])
 					ptr_classe = ptr_classe->suivant;
 				
 				AfficherClasse(*ptr_classe);
+				RetourLigne(3);
 				break;
 				
 			case 8:
 				AfficherEcole(ecole);
+				RetourLigne(3);
 				break;
 				
 			case 9:
 				ecrireBaseEleve(nomFichier, ecole);
 				fin_prog = 1;
+				RetourLigne(3);
 				break;
 				
 			default:
