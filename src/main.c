@@ -86,6 +86,12 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 2:
+				if (ecole.nbClasse == 0)
+				{
+					printf("Aucun eleve dans l'ecole.\n");
+					break;
+				}
+				
 				printf("Affichage de l'eleve :\n");
 				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
@@ -167,6 +173,12 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 5:
+				if (ecole.nbClasse == 0)
+				{
+					printf("Aucun eleve dans l'ecole.\n");
+					break;
+				}
+				
 				printf("Recherche d'un eleve dans l'ecole :\n");
 				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
@@ -219,6 +231,12 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 7:
+				if (ecole.nbClasse == 0)
+				{
+					printf("Aucune classe a afficher.\n");
+					break;
+				}
+				
 				printf("Quelle classe voulez-vous afficher :\n");
 				RetourLigne(1);
 				AfficherListeClasse(ecole.premiereClasse);
@@ -243,7 +261,8 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 9:
-				ecrireBaseEleve(nomFichier, ecole);
+				if (ecole.premiereClasse != NULL)
+					ecrireBaseEleve(nomFichier, ecole);
 				fin_prog = 1;
 				break;
 				
@@ -252,6 +271,8 @@ int main(int argc, char* argv[])
 				RetourLigne(3);
 		}
 	} while (!fin_prog);
+	
+	printf("Vous quittez le programme, aurevoir.\n");
 
 	return 0;
 }

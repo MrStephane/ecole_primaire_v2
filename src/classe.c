@@ -166,6 +166,8 @@ void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve)
 	}
 	
 	SupprimerEleve(ptr_eleve);
+	
+	--ptr_classe->nbEleve;
 }
 
 

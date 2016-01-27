@@ -137,7 +137,31 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	if (ptr_classe == NULL)
 		printf("Erreur dans la recherche de la classe.\n");
 	else
+	{
 		SupprimerEleveDansClasse(ptr_classe, ptr_eleve);
+		
+		// Si il n'y a plus d'élève dans la classe
+		if (ptr_classe->nbEleve == 0)
+		{
+			if (ptr_classe->precedent == NULL)
+			{
+				ptr_ecole->premierClasse = ptr_classe->suivant;
+				if (ptr_classe->suivant != NULL)
+					ptr_classe->suivant->precedent = NULL;
+			}
+			else if (ptr_classe->suivant == NULL)
+			{
+				ptr_classe->precedent->suivant = NULL;
+			}
+			else
+			{
+				ptr_classe->suivant->precedent = ptr_classe->precedent;
+				ptr_classe->precedent->suivant = ptr_classe->suivant;
+			}
+			
+			--ptr_ecole->nbClasse;
+		}
+	}
 }
 
 
