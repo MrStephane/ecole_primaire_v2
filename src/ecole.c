@@ -55,7 +55,18 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	if (ptr_classe != NULL)
 		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
 	else
-		SupprimerEleve(ptr_eleve);
+	{
+		// Il faut crer une classe
+		ptr_classe = CreationClasse();
+		
+		strcpy(ptr_classe->nomClasse, ptr_eleve->nomClasse);
+		
+		AjouterClasse(ptr_ecole, ptr_classe);
+		
+		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
+		
+		//SupprimerEleve(ptr_eleve);
+	}
 	
 
 	//Liste d'attente.
@@ -166,4 +177,52 @@ void ModificationEleve(Ecole_t *ptr_ecole, Eleve_t *ptr_eleve)
 				printf("Choix non valide !\n");
 		}
 	} while (!continuer);
+}
+
+
+
+void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
+{
+	Classe_t *ptr_classeCourante = ptr_ecole->premiereClasse;
+	
+	char* classe[5] = {"CP", "CE1", "CE2", "CM1", "CM2"};
+	
+	int i = 0, j = 0;
+	
+	
+	
+	// Si il n'y a aucune classe alors on l'ajoute.
+	if (ptr_ecole->nbClasse == 0)
+	{
+		ptr_ecole->premiereClasse = ptr_classeAAjouter;
+		++ptr_ecole->nbClasse;
+	}
+	
+	if (i == 5)
+		exit(EXIT_FAILURE);
+	
+	while (strcmp(classe[i], ptr_classeAAjouter->nomClasse) != 0)
+		++i;
+	
+	while (j < i && ptr_classeCourante->suivant != NULL)
+	{
+		ptr_classeCourante = ptr_classeCourante->suivant;
+		++j;
+	}
+	
+	if (ptr_classeCourante->precedement == NULL)
+	{
+		ptr_ecole->premiereClasse = ptr_classeAAjouter;
+		ptr_classeCourante->precedement = ptr_classeAAjouter;
+		ptr_classeAAjouter->suivant = ptr_classeCourante;
+	}
+	else
+	{
+		ptr_classeAAjouter->suivant = ptr_classeCourante;
+		ptr_classeAAjouter->precedent = ptr_classeCourante->precedent;
+		ptr_classeCourante->precedent->suivant = ptr_classeAAjouter;
+		ptr_classeCourante->precedement = ptr_classeAAjouter;
+	}
+	
+	++ptr_ecole->nbClasse;
 }

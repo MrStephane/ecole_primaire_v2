@@ -104,4 +104,8 @@ void ModificationEleve(Ecole_t *ptr_ecole, Eleve_t *ptr_eleve);
 
 
 
+void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter);
+
+
+
 #endif
