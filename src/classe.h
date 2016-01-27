@@ -39,7 +39,7 @@ typedef struct Classe
  *************/
 
 
-Classe_t CreationClasse(void);
+Classe_t* CreationClasse(void);
 
  
  

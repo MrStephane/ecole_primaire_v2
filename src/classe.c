@@ -7,7 +7,7 @@
 #include "classe.h"
 
 
-Classe_t CreationClasse(void)
+Classe_t* CreationClasse(void)
 {
 	Classe_t *ptr_classe;
 	
