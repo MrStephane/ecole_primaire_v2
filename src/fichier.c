@@ -1,27 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
 
 #include "fichier.h"
-
-int comptedonnees(FILE * fichier)
-{
-	char lignes[100];
-	char c;
-	int compteur = 0;
-	
-	while((c=fgetc(fichier)) != EOF) // Tant qu'on parcours le fichier sans en trouver la fin
-	{
-		if(c == '\n')
-			compteur++;	// on incrémente le compteur a chaque saut de ligne
-	}
-	//printf("\n\t Le fichier contient %d lignes\n", compteur);	// puis affichage de celui ci
-	
-	return compteur;	// on renvoie le nombre de lignes
-}
-
 
 void gestionErreurs(FILE * fichier)
 {
@@ -31,51 +15,8 @@ void gestionErreurs(FILE * fichier)
 		exit(EXIT_FAILURE);
 	}
 }
-/*
-void SaveBinaireBaseEleve(const char *nomFichier, Ecole_t ecole)
-{
-	FILE * fichier;
-	Classe_t* positionClasse = ecole.premiereClasse;
-	Eleve_t* positionEleve = premiereClasse->classe;
-	
-	fichier = fopen(nomFichier, "wb");
-		gestionErreurs(fichier);
-	
-	
-	while(positionClasse->suivant != NULL)
-	{
-		while(positionEleve->suivant != NULL)
-		{
-			fwrite(positionEleve, sizeof(Eleve_t), ecole.nbClasse, fichier);
-			positionEleve = positionEleve->suivant;
-		}
-		positionClasse = positionClasse->suivant;
-	}
-	fclose(fichier);
-}
 
 
-void RecupSaveBinaireBaseEleve(const char *nomFichier, Ecole_t * ptr_ecole)
-{
-	FILE * fichier;
-	
-	Classe_t* positionClasse = ptr_ecole->premiereClasse;
-	Eleve_t* positionEleve = premiereClasse->classe;
-	
-	fichier = fopen(nomFichier, "rb");
-		gestionErreurs(fichier);
-	
-	// Tant qu'on ne rencontre pas la fin du fichier
-	while(!feof(fichier))
-	{	// Lecture et ecriture dans la structure eleve
-		fread(positionEleve, sizeof(Eleve_t), ptr_ecole->nbClasse, fichier);
-		
-		positionEleve->suivant = malloc(sizeof(Eleve_t));
-		positionEleve = positionEleve->suivant;
-	}
-	fclose(fichier);)
-}
-*/
 
 void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 {
@@ -84,75 +25,99 @@ void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 	Classe_t *positionClasse = ecole.premiereClasse;
 	Eleve_t *positionEleve = positionClasse->premierEleve;
 	
-	fichier = fopen(nomFichier, "a");	// Ouverture en ecriture en fin de fichier
+	fichier = fopen(nomFichier, "w");	// Ouverture en ecriture, écrasement si fichier deja existant
 	gestionErreurs(fichier);
 		
 		
+	// infos de l'ecole
+	fprintf(fichier, "%s;%d;\n", ecole.nomEcole, ecole.nbClasse);
 		do
-		{
+		{	// infos de la classe
+		fprintf(fichier, "%s;%d;%s;%s;%s;\n",
+		positionClasse->nomClasse, 
+		positionClasse->nbEleve,
+		positionClasse->professeur->civilite, 
+		positionClasse->professeur->nom, 
+		positionClasse->professeur->prenom);
+		
 		positionEleve = positionClasse->premierEleve;
-			do
-			{
-				fprintf(fichier, "%s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
+			
+			while(positionEleve != NULL)
+			{	//infos de l'eleve
+				fprintf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;%s;\n",
 				positionEleve->nom,
 				positionEleve->prenom,
 				positionEleve->age,
 				positionEleve->dateDeNaissance.tm_mday,
-				positionEleve->dateDeNaissance.tm_mon,
-				positionEleve->dateDeNaissance.tm_year,
+				positionEleve->dateDeNaissance.tm_mon-1,
+				positionEleve->dateDeNaissance.tm_year-1900,
 				positionEleve->genre,
 				positionEleve->nomClasse,
 				positionEleve->adresse);		// Ecriture dans le fichier
 					
-				positionEleve = positionEleve->suivant;
-			} while(positionEleve->suivant != NULL);
+			  positionEleve = positionEleve->suivant;
+			}
 			
-			positionClasse = positionClasse->suivant;
-		} while(positionClasse->suivant != NULL);
+		  positionClasse = positionClasse->suivant;
+		} while(positionClasse != NULL);
 			
 	fclose(fichier);	// Fermeture du fichier écrit
 
 }
 
-/*
+
 void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole)
 {
 	FILE * fichier;
 	
-	Classe_t * positionClasse = ptr_ecole->depart;
-	Eleve_t * positionEleve = positionClasse->classe;
+	Classe_t * positionClasse = ptr_ecole->premiereClasse;
+	Eleve_t * positionEleve = positionClasse->premierEleve;
+	
+	int i; // Compteur de boucle sur Classe
+	int j; // Compteur de boucle sur Eleve
 	
 	fichier = fopen(nomFichier, "r");	// Ouverture du fichier de sauvegarde en lecture seule
-	gestionErreurs(fichier);
 	
-	
-	while(!feof(fichier))
+	if(!fichier)
 	{
-		
+		printf("\n\n\t  Aucune ecole, veuillez la creer.\n\n");
+		return;
 	}
-	
-	
-	while(positionClasse->suivant != NULL)
+	else
 	{
-	positionEleve = positionClasse->classe;
+	// recuperation de la ligne permettant de connaitre le nombre de classes dans l'école
+	fscanf(fichier, "%s %d\n", ptr_ecole->nomEcole, &ptr_ecole->nbClasse);
+	
+	printf("\n\tEcole: %s\n\tclasse: %d\n", ptr_ecole->nomEcole, ptr_ecole->nbClasse);
+	
+		/**for(i = 0; i < ptr_ecole->nbClasse-1; i++)
+		{				
+			fscanf(fichier, "%s;%d;%s;%s;%s\n",
+			positionClasse->nomClasse, 
+			&positionClasse->nbEleve,	// Recup du nombre d'eleves sur les lignes suivantes du fichier
+			positionClasse->professeur->civilite, 
+			positionClasse->professeur->nom, 
+			positionClasse->professeur->prenom);
 		
-		while(positionEleve->suivant != NULL)
-		{
-			fscanf(fichier, " %s ; %s ; %d ; %d/%d/%d ; %d ; %s ; %s ;\n",
-				positionEleve->nom, positionEleve->prenom,
-				&positionEleve->age,
-				&positionEleve->dateDeNaissance.tm_mday,
-				&positionEleve->dateDeNaissance.tm_mon,
-				&positionEleve->dateDeNaissance.tm_year,
-				&positionEleve->genre,
-				positionEleve->nomClasse,
-				positionEleve->adresse);
-
-			positionEleve = positionEleve->suivant;
-		}
-	positionClasse = positionClasse->suivant;
+			positionClasse->premierEleve = positionEleve;
+			
+				for(j = 0; j < positionClasse->nbEleve-1; j++)
+				{						
+					fscanf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;%s\n",
+					positionEleve->nom,
+					positionEleve->prenom,
+					&positionEleve->age,
+					&positionEleve->dateDeNaissance.tm_mday,
+					&positionEleve->dateDeNaissance.tm_mon+1,
+					&positionEleve->dateDeNaissance.tm_year+1900,
+					&positionEleve->genre,
+					positionEleve->nomClasse,
+					positionEleve->adresse);
+					
+					positionEleve = positionEleve->suivant;
+				}
+		positionClasse = positionClasse->suivant;
+		}*/
 	}
-
-	fclose(fichier);
 }
- 	*/
+
