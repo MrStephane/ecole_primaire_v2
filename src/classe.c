@@ -154,7 +154,7 @@ void SupprimerEleveDansClasse(Classe_t *ptr_classe, Eleve_t *ptr_eleve)
 Classe_t* RechercherClasseEleve(Classe_t* ptr_classeCourante, Eleve_t * ptr_eleve)
 {
 	// Tant qu'on a pas parcouru toute les classes
-	while (ptr_classeCourante->suivant != NULL)
+	while (ptr_classeCourante != NULL)
 	{
 		// Si l'élève est dans cette classe alors on retourne le pointeur de la classe
 		if (RechercherEleveDansClasse(ptr_classeCourante, ptr_eleve->nom, ptr_eleve->prenom) != NULL)
