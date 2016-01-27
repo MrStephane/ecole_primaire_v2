@@ -43,13 +43,13 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 	
 	// Si on a pas passé de nom en paramètre alors on le saisit
 	if (nom == NULL)
-		SaisieChaineControle(ptr_eleve->nom, "\nNom : ");
+		SaisieChaineControle("Nom : ", ptr_eleve->nom);
 	else
 		strcpy(ptr_eleve->nom, nom);
 
 	// Si on a pas passé de prenom en paramètre alors on le saisi
 	if (prenom == NULL)
-		SaisieChaineControle(ptr_eleve->nom, "\nPrenom : ");
+		SaisieChaineControle("Prenom : ", ptr_eleve->nom);
 	else
 		strcpy(ptr_eleve->prenom, prenom);
 
