@@ -221,6 +221,12 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 6:
+				if (ecole.nbClasse == 0)
+				{
+					printf("Aucun eleve dans l'ecole.\n");
+					break;
+				}
+				
 				printf("Suppression d'un eleve :\n");
 				RetourLigne(1);
 				SaisieChaineControle("Nom : ", nom);
