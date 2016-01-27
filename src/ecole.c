@@ -145,7 +145,7 @@ void SupprimerEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 		{
 			if (ptr_classe->precedent == NULL)
 			{
-				ptr_ecole->premierClasse = ptr_classe->suivant;
+				ptr_ecole->premiereClasse = ptr_classe->suivant;
 				if (ptr_classe->suivant != NULL)
 					ptr_classe->suivant->precedent = NULL;
 			}
