@@ -32,15 +32,8 @@ void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 		
 	// infos de l'ecole
 	fprintf(fichier, "%s;%d;\n", ecole.nomEcole, ecole.nbClasse);
-		do
-		{	// infos de la classe
-		/*fprintf(fichier, "%s;%d;%s;%s;%s;\n",
-		positionClasse->nomClasse, 
-		positionClasse->nbEleve,
-		positionClasse->professeur->civilite, 
-		positionClasse->professeur->nom, 
-		positionClasse->professeur->prenom);*/
-		
+	do
+	{	// infos de la classe
 		fprintf(fichier, "%s;%d;\n",
 		positionClasse->nomClasse, 
 		positionClasse->nbEleve);
@@ -48,37 +41,25 @@ void ecrireBaseEleve(const char *nomFichier, Ecole_t ecole)
 		if (positionClasse != NULL)
 			positionEleve = positionClasse->premierEleve;
 			
-			while(positionEleve != NULL)
-			{	//infos de l'eleve
-				/*fprintf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;%s;\n",
-				positionEleve->nom,
-				positionEleve->prenom,
-				positionEleve->age,
-				positionEleve->dateDeNaissance.tm_mday,
-				positionEleve->dateDeNaissance.tm_mon-1,
-				positionEleve->dateDeNaissance.tm_year-1900,
-				positionEleve->genre,
-				positionEleve->nomClasse,
-				positionEleve->adresse);*/		// Ecriture dans le fichier
+		while(positionEleve != NULL)
+		{	//infos de l'eleve
+			fprintf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;\n",
+			positionEleve->nom,
+			positionEleve->prenom,
+			positionEleve->age,
+			positionEleve->dateDeNaissance.tm_mday,
+			positionEleve->dateDeNaissance.tm_mon+1,
+			positionEleve->dateDeNaissance.tm_year+1900,
+			positionEleve->genre,
+			positionEleve->nomClasse);
 				
-				fprintf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;\n",
-				positionEleve->nom,
-				positionEleve->prenom,
-				positionEleve->age,
-				positionEleve->dateDeNaissance.tm_mday,
-				positionEleve->dateDeNaissance.tm_mon+1,
-				positionEleve->dateDeNaissance.tm_year+1900,
-				positionEleve->genre,
-				positionEleve->nomClasse);
-					
-			  positionEleve = positionEleve->suivant;
-			}
+		  	positionEleve = positionEleve->suivant;
+		}
 			
-		  positionClasse = positionClasse->suivant;
-		} while(positionClasse != NULL);
+		positionClasse = positionClasse->suivant;
+	} while(positionClasse != NULL);
 			
 	fclose(fichier);	// Fermeture du fichier écrit
-
 }
 
 
@@ -103,49 +84,13 @@ void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole)
 	fichier = fopen(nomFichier, "r");	// Ouverture du fichier de sauvegarde en lecture seule
 	
 	if(!fichier)
-	{
-		printf("\n\n\t  Aucune ecole, veuillez la creer.\n\n");
 		return;
-	}
 	else
 	{
-		// recuperation de la ligne permettant de connaitre le nombre de classes dans l'école
-		//fscanf(fichier, "%s %d\n", ptr_ecole->nomEcole, &ptr_ecole->nbClasse);
 		fgets(ligne, 200, fichier);
 		strcpy(ptr_ecole->nomEcole, strtok(ligne, ";"));
 		ptr_ecole->nbClasse = atoi(strtok(NULL, ";"));
 	
-		//printf("\n\tEcole: %s\n\tclasse: %d\n", ptr_ecole->nomEcole, ptr_ecole->nbClasse);
-	
-		/*for(i = 0; i < ptr_ecole->nbClasse-1; i++)
-		{				
-			fscanf(fichier, "%s;%d;%s;%s;%s\n",
-			positionClasse->nomClasse, 
-			&positionClasse->nbEleve,	// Recup du nombre d'eleves sur les lignes suivantes du fichier
-			positionClasse->professeur->civilite, 
-			positionClasse->professeur->nom, 
-			positionClasse->professeur->prenom);
-		
-			positionClasse->premierEleve = positionEleve;
-			
-			for(j = 0; j < positionClasse->nbEleve-1; j++)
-			{						
-				fscanf(fichier, "%s;%s;%d;%d;%d;%d;%d;%s;%s\n",
-				positionEleve->nom,
-				positionEleve->prenom,
-				&positionEleve->age,
-				&positionEleve->dateDeNaissance.tm_mday,
-				&positionEleve->dateDeNaissance.tm_mon+1,
-				&positionEleve->dateDeNaissance.tm_year+1900,
-				&positionEleve->genre,
-				positionEleve->nomClasse,
-				positionEleve->adresse);
-				
-				positionEleve = positionEleve->suivant;
-			}
-			positionClasse = positionClasse->suivant;
-		}*/
-		
 		for(i = 0; i < ptr_ecole->nbClasse; i++)
 		{
 			ptr_classe = CreationClasse();

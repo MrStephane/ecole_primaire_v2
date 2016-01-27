@@ -245,7 +245,6 @@ int main(int argc, char* argv[])
 			case 9:
 				ecrireBaseEleve(nomFichier, ecole);
 				fin_prog = 1;
-				RetourLigne(3);
 				break;
 				
 			default:
