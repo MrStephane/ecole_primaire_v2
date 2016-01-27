@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 	strcat(nomFichier, ".csv");
 	
 	// Si il y a deja une base enregistré, alors on la récupère.
-	//lireBaseEleve(nomFichier, &ecole);
+	lireBaseEleve(nomFichier, &ecole);
 	
 	do
 	{
@@ -220,6 +220,7 @@ int main(int argc, char* argv[])
 				break;
 				
 			case 9:
+				ecrireBaseEleve(nomFichier, ecole);
 				fin_prog = 1;
 				break;
 				
