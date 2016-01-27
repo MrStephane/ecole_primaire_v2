@@ -77,6 +77,7 @@ void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole)
 	
 	int i; // Compteur de boucle sur Classe
 	int j; // Compteur de boucle sur Eleve
+	int k;
 	
 	
 	
@@ -122,37 +123,40 @@ void lireBaseEleve(const char *nomFichier, Ecole_t *ptr_ecole)
 				if (ptr_elevePrecedent != NULL)
 					ptr_elevePrecedent->suivant = ptr_eleve;
 				
-				chaine = strtok(NULL, ";");
+				chaine = strtok(ligne, ";");
+				strcpy(ptr_eleve->nom, chaine);
 				
-				switch(j)
+				for (k = 0; k < 8; ++k)
 				{
-					case 0:
-						strcpy(ptr_eleve->nom, chaine);
-						break;
-					case 1:
-						strcpy(ptr_eleve->prenom, chaine);
-						break;
-					case 2:
-						ptr_eleve->age = atoi(chaine);
-						break;
-					case 3:
-						ptr_eleve->dateDeNaissance.tm_mday = atoi(chaine);
-						break;
-					case 4:
-						ptr_eleve->dateDeNaissance.tm_mon = atoi(chaine) - 1;
-						break;
-					case 5:
-						ptr_eleve->dateDeNaissance.tm_year = atoi(chaine) - 1900;
-						break;
-					case 6:
-						ptr_eleve->genre = atoi(chaine);
-						break;
-					case 7:
-						strcpy(ptr_eleve->nomClasse, chaine);
-						break;
-					case 8:
-						strcpy(ptr_eleve->adresse, chaine);
-						break;
+					chaine = strtok(NULL, ";");
+					
+					switch(k)
+					{
+						case 0:
+							strcpy(ptr_eleve->prenom, chaine);
+							break;
+						case 1:
+							ptr_eleve->age = atoi(chaine);
+							break;
+						case 2:
+							ptr_eleve->dateDeNaissance.tm_mday = atoi(chaine);
+							break;
+						case 3:
+							ptr_eleve->dateDeNaissance.tm_mon = atoi(chaine) - 1;
+							break;
+						case 4:
+							ptr_eleve->dateDeNaissance.tm_year = atoi(chaine) - 1900;
+							break;
+						case 5:
+							ptr_eleve->genre = atoi(chaine);
+							break;
+						case 6:
+							strcpy(ptr_eleve->nomClasse, chaine);
+							break;
+						case 7:
+							strcpy(ptr_eleve->adresse, chaine);
+							break;
+					}
 				}
 				
 				ptr_eleve->precedent = ptr_elevePrecedent;
