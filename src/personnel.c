@@ -26,7 +26,7 @@ void SaisirPersonnel(Personnel_t * ptr_personnel)
 {
     int i;
 	int continuer;
-	int* nbPers;
+	int nbPers;
 
     do
 	{
@@ -35,23 +35,26 @@ void SaisirPersonnel(Personnel_t * ptr_personnel)
 		scanf("%d", &nbPers);
 		ViderBuffer();
 
-		if (*nbPers <= 0 || *nbPers > 20)
+		if (nbPers <= 0 || nbPers > 20)
 		{
 			printf("\tErreur !");
 			continuer = 0;
 		}
 	} while (!continuer);
 
-    for(i=0; i<*nbPers; i++)
-    {
+     while(ptr_personnel!=NULL)
+     {
+
+       for(i=0; i<nbPers; i++)
+     {
         do
 		{
 			continuer = 1;
 			printf("\n\tSaisir la civilite du personnel ( Monsieur, Madame, Mademoiselle ) : ");
-			scanf("%s", ptr_personnel[i].civilite);
+			scanf("%s", ptr_personnel->civilite);
 			ViderBuffer();
 
-			if (!ControleChaine(ptr_personnel[i].civilite))
+			if (!ControleChaine(ptr_personnel->civilite))
 			{
 				printf("\n\tEcrivez les informations sans chiffres ni accents !\n");
 				continuer = 0;
@@ -62,10 +65,10 @@ void SaisirPersonnel(Personnel_t * ptr_personnel)
 		{
 			continuer = 1;
 			printf("\tEntrez le nom du personnel : ");
-			scanf("%s", ptr_personnel[i].nom);
+			scanf("%s", ptr_personnel->nom);
 			ViderBuffer();
 
-			if (!ControleChaine(ptr_personnel[i].nom))
+			if (!ControleChaine(ptr_personnel->nom))
 			{
 				printf("\n\tEcrivez les informations sans chiffres ni accents !\n");
 				continuer = 0;
@@ -76,10 +79,10 @@ void SaisirPersonnel(Personnel_t * ptr_personnel)
 		{
 			continuer = 1;
 			printf("\tEntrez le prenom du personnel : ");
-			scanf("%s", ptr_personnel[i].prenom);
+			scanf("%s", ptr_personnel->prenom);
 			ViderBuffer();
 
-			if (!ControleChaine(ptr_personnel[i].prenom))
+			if (!ControleChaine(ptr_personnel->prenom))
 			{
 				printf("\n\tEcrivez les informations sans chiffres ni accents !\n");
 				continuer = 0;
@@ -90,21 +93,23 @@ void SaisirPersonnel(Personnel_t * ptr_personnel)
 		{
 			continuer = 1;
 			printf("\n\tVeuillez saisir sa fonction ( Directeur, CPE, Surveillant, Entretient ) :");
-			scanf("%s", ptr_personnel[i].metier);
+			scanf("%s", ptr_personnel->metier);
 			ViderBuffer();
 
-			if (!ControleChaine(ptr_personnel[i].metier))
+			if (!ControleChaine(ptr_personnel->metier))
 			{
 				printf("\n\tEcrivez les informations sans chiffre(s) ni accent(s).\n");
 				continuer = 0;
 			}
 		} while (!continuer);
 
-		NormaliserNomPrenom(NULL,ptr_personnel[i].nom,ptr_personnel[i].prenom);
-		NormaliserNomPrenom(NULL,ptr_personnel[i].metier,ptr_personnel[i].civilite);
-    }
+		NormaliserNomPrenom(NULL,ptr_personnel->nom,ptr_personnel->prenom);
+		NormaliserNomPrenom(NULL,ptr_personnel->metier,ptr_personnel->civilite);
+      }
 
-    RetourLigne(1);
+    ptr_personnel=ptr_personnel->suivant;
+        RetourLigne(1);
+}
 }
 
 
