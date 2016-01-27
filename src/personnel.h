@@ -25,8 +25,8 @@ typedef struct Personnel
 	char prenom[TAILLECHAINE];
 	char metier[TAILLECHAINE];
 	int nbPers;
-	struct personnel *suivant;
-	struct personnel *precedent;
+	struct Personnel *suivant;
+	struct Personnel *precedent;
 }Personnel_t;
 
 
