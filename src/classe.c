@@ -78,9 +78,14 @@ void AjouterEleveDansClasse(Classe_t* ptr_classe, Eleve_t* ptr_eleve)
 
 	else
 	{
-		eleveCourant = ptr_classe->premierEleve;
-		eleveCourant = DernierEleve(eleveCourant);
-		eleveCourant->suivant = ptr_eleve;
+		if (ptr_classe->premierEleve == NULL)
+			ptr_classe->premierEleve = ptr_eleve;
+		else
+		{
+			eleveCourant = ptr_classe->premierEleve;
+			eleveCourant = DernierEleve(eleveCourant);
+			eleveCourant->suivant = ptr_eleve;
+		}
 	}
 }
 

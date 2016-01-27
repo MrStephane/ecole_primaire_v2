@@ -7,8 +7,7 @@
 #include "eleve.h"
 
 
-extern struct tm dateJ;
-extern struct tm rentreeScolaire;
+
 
 
 Eleve_t* CreationEleve(void)
@@ -29,11 +28,18 @@ Eleve_t* CreationEleve(void)
 
 void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 {
+	struct tm dateJ, rentreeScolaire;
+	
 	char* nomCategorie[5] = {"CP", "CE1", "CE2", "CM1", "CM2"};
 
 	int categorie;
 	int genre;
 
+	
+	// On récupère la date du jour
+	RecupererDate(&dateJ);
+	// On calcule la date de rentré scolaire
+	CalculRentreeScolaire(dateJ, &rentreeScolaire);
 	
 	// Si on a pas passé de nom en paramètre alors on le saisit
 	if (nom == NULL)
@@ -51,7 +57,7 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
     do
     {
-        printf("\tDate de naissance ");
+        printf("Date de naissance ");
         SaisirDate(&ptr_eleve->dateDeNaissance);
     } while (ControleDate(ptr_eleve->dateDeNaissance) != 1);
 
@@ -67,12 +73,12 @@ void SaisirEleve(Eleve_t* ptr_eleve, char* nom, char* prenom)
 
     do
     {
-    	printf("\tS'agit-il d'un garcon (0) ou d'une fille (1) : ");
+    	printf("S'agit-il d'un garcon (0) ou d'une fille (1) : ");
     	scanf("%d", &genre);
     	ViderBuffer();
 
     	if (genre != 0 && genre != 1)
-    		printf("\tErreur !\n");
+    		printf("Erreur !\n");
     } while (genre != 0 && genre != 1);
 
     ptr_eleve->genre = genre;

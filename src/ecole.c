@@ -5,7 +5,7 @@
 #include <time.h>
 
 #include "ecole.h"
-
+extern struct tm dateJ;
 
 
 
@@ -49,8 +49,18 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 	// Appel a SaisirEleve avec le nom et prenom precedement saisie pour remplir les autre champs (age, etc...)
 	SaisirEleve(ptr_eleve, nom, prenom);
 	
+	// Si l'élève n'a pas le niveau alors on le supprime.
+	if (strcmp(ptr_eleve->nomClasse, "NULL") == 0)
+	{
+		printf("Cet eleve n'a pas le niveau primaire.\n");
+		SupprimerEleve(ptr_eleve);
+		return;
+	}
+	
 	// Recherche de la classe qui correspond au niveau de l'élève
 	ptr_classe = RechercherNiveauClasse(ptr_ecole->premiereClasse, ptr_eleve);
+	
+	
 	
 	if (ptr_classe != NULL)
 		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
@@ -62,7 +72,7 @@ void AjouterEleveDansEcole(Ecole_t *ptr_ecole, char *nom, char *prenom)
 		strcpy(ptr_classe->nomClasse, ptr_eleve->nomClasse);
 		
 		AjouterClasse(ptr_ecole, ptr_classe);
-		
+		printf("Fichier %s, ligne %d\n", __FILE__, __LINE__);
 		AjouterEleveDansClasse(ptr_classe, ptr_eleve);
 		
 		//SupprimerEleve(ptr_eleve);
@@ -196,6 +206,7 @@ void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
 	{
 		ptr_ecole->premiereClasse = ptr_classeAAjouter;
 		++ptr_ecole->nbClasse;
+		return;
 	}
 	
 	if (i == 5)
@@ -210,7 +221,7 @@ void AjouterClasse(Ecole_t *ptr_ecole, Classe_t *ptr_classeAAjouter)
 		++j;
 	}
 	
-	if (ptr_classeCourante->precedement == NULL)
+	if (ptr_classeCourante->precedent == NULL)
 	{
 		ptr_ecole->premiereClasse = ptr_classeAAjouter;
 		ptr_classeCourante->precedent = ptr_classeAAjouter;

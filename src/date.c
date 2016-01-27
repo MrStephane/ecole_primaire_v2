@@ -13,9 +13,8 @@
 void RecupererDate(struct tm *ptr_dateJour)
 {
     time_t sec;
-    time(&sec);
-    ptr_dateJour=localtime(&sec);
-
+    sec = time(NULL);
+    memcpy(ptr_dateJour, localtime(&sec), sizeof(struct tm));
 }
 
 
@@ -32,7 +31,7 @@ void SaisirDate(struct tm *ptr_date)
 	printf("(jj.mm.aaaa) : ");
 	scanf("%d.%d.%d", &ptr_date->tm_mday, &ptr_date->tm_mon, &ptr_date->tm_year);
 	ViderBuffer();
-	ptr_date->tm_mday = ptr_date->tm_mday-1;
+	ptr_date->tm_mon = ptr_date->tm_mon-1;
 	ptr_date->tm_year = ptr_date->tm_year-1900;
 }
 
@@ -135,7 +134,10 @@ int CalculerAge(struct tm dateJ, struct tm dateN)
 
 int CategorieAge(struct tm dateN, struct tm dateR)
 {
-    // Si le mois de naissance est inférieur à Septembre il faut soutraire un an à l'année de naissance pour obtenir la bonne catégorie d'age
+    	dateR.tm_year += 1900;
+    	dateN.tm_year += 1900;
+    	
+    	// Si le mois de naissance est inférieur à Septembre il faut soutraire un an à l'année de naissance pour obtenir la bonne catégorie d'age
 	if (dateN.tm_mon < 8)
         return (dateR.tm_year - (dateN.tm_year - 1));
 

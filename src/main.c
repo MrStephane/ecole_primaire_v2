@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
 		printf("2 - Afficher un eleve.\n");
 		printf("3 - Modifier un eleve.\n");
 		printf("4 - Rechercher un eleve dans une classe.\n");
-		printf("5 - Rechercher un eleve dans l'ecole.");
+		printf("5 - Rechercher un eleve dans l'ecole.\n");
 		printf("6 - Supprimer un eleve.\n");
 		printf("7 - Afficher une classe\n");
 		printf("8 - Afficher l'ecole.\n");
