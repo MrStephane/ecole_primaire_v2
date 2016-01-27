@@ -39,7 +39,7 @@ personnel.o : personnel.c personnel.h
 ecole.o: ecole.c classe.h personnel.h fonctionAnnexe.o date.o eleve.o prof.o classe.o personnel.o
 	$(Compilo) $(CFLAGS) -c $<
     
-fichier.o : fichier.c fichier.h
+fichier.o : fichier.c fichier.h fonctionAnnexe.o date.o eleve.o prof.o classe.o ecole.o personnel.o
 	$(Compilo) $(CFLAGS) -c fichier.c
 
 main.o: main.c fichier.h fonctionAnnexe.o date.o eleve.o prof.o classe.o ecole.o fichier.o personnel.o
